@@ -1,5 +1,5 @@
 ![check](https://github.com/mapme-initiative/mapme.forest/workflows/R-CMD-check/badge.svg)
-![coverage](https://github.com/mapme-initiative/mapme.forest/workflows/test-coverage/badge.svg)
+[![Coverage Status](https://img.shields.io/codecov/c/github/mapme-initiative/mapme.forest/master.svg)](https://codecov.io/github/mapme-initiative/mapme.forest?branch=master)
 
 **About**
 
@@ -13,7 +13,7 @@ The tutorial for the usage of the **mapme.forest package** can be found [here](h
 this page in order to get to know the API of mapme.forest.
 
 
-**Installation under Linux**
+**Installation instructions under Linux**
 
 The mapme.forest package can then be installed by using the `remotes` package by entering the following command:
 
@@ -32,7 +32,7 @@ In our installation instruction we assume that you are going to use R Studio as 
 - download and install R >= 3.5.x from https://cran.rstudio.com/
 - download and install R Studio from https://rstudio.com/products/rstudio/download/#download
 - download and install Rtools from https://cran.r-project.org/bin/windows/Rtools and make Rtools available on the PATH variable
-- install the devtools and git2r packages with 'install.packages(c("devtools", "git2r"))'
+- install the remotes packages with 'install.packages("remotes")'
 - install mapme.forest with the following command: `remotes::install_github("mapme-initiative/mapme.forest")` and close R Studio afterwards
 
 Now the package has been sucessfully installed, however, you are not necessarily 100% ready to use it. Since some of the function use gdal system calls we additionally need a valid gdal installation on your machine. 

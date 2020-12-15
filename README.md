@@ -1,25 +1,20 @@
+**About**
+
+The mapme.forest package helps you to understand past deforestation dynamics around the world. Next to calculating areal statistics about
+the amount of deforestation in a given space, the tool provides you with the ability to calculate a high number of common fragmentation
+statistics of a given landscape.
+
 **Tutorial**
 
-The tutorial for the usage of the **mapme.forest package** can be found [here](https://tutorials-mapme.test.sixmarkets.net/). You can find installation
-instructions below.
+The tutorial for the usage of the **mapme.forest package** can be found [here](https://mapme-initiative.github.io/mapme.forest/). Please visit
+this page in order to get to know the API of mapme.forest.
 
 
-**Usage**
+**Installation under Linux**
 
-The installation and usage of this package depends on the SDMTools package which currently no longer is hosted on CRAN. However, it can be installed from Rforge using this command:
+The mapme.forest package can then be installed by using the `remotes` package by entering the following command:
 
-`install.packages('SDMTools', repos = 'http://rforge.net/', source = TRUE)`
-
-Alternativley, it can also be installed from GitHub using:
-
-`devtools::install_github("jjvanderwal/SDMTools")`
-
-It is the GitHub version of the package which is going to be installed when the SDMTools dependency is not met on a machine during installation of
-the ForestIndicator packages.
-
-The ForestIndicators package can then be installed by using the `devtools` package by entering the following command:
-
-`devtools::install_github("openkfw/mapme.forest")`.
+`remotes::install_github("mapme-initiative/mapme.forest")`.
 
 Additionally, we ship this package with a Dockerfile which can be used to run the packages and its dependencies as a container. When `cd`ing into the repository,  building and running the image is as simple as:
 
@@ -35,7 +30,7 @@ In our installation instruction we assume that you are going to use R Studio as 
 - download and install R Studio from https://rstudio.com/products/rstudio/download/#download
 - download and install Rtools from https://cran.r-project.org/bin/windows/Rtools and make Rtools available on the PATH variable
 - install the devtools and git2r packages with 'install.packages(c("devtools", "git2r"))'
-- install mapme.forest with the following command: `devtools::install_github("openkfw/mapme.forest")` and close R Studio afterwards
+- install mapme.forest with the following command: `remotes::install_github("mapme-initiative/mapme.forest")` and close R Studio afterwards
 
 Now the package has been sucessfully installed, however, you are not necessarily 100% ready to use it. Since some of the function use gdal system calls we additionally need a valid gdal installation on your machine. 
 - go to https://trac.osgeo.org/osgeo4w/ and download the osgeo4w.exe and run it

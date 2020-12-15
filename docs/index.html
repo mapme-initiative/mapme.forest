@@ -81,16 +81,13 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
+<p><strong>About</strong></p>
+<p>The mapme.forest package helps you to understand past deforestation dynamics around the world. Next to calculating areal statistics about the amount of deforestation in a given space, the tool provides you with the ability to calculate a high number of common fragmentation statistics of a given landscape.</p>
 <p><strong>Tutorial</strong></p>
-<p>The tutorial for the usage of the <strong>mapme.forest package</strong> can be found <a href="https://tutorials-mapme.test.sixmarkets.net/">here</a>. You can find installation instructions below.</p>
-<p><strong>Usage</strong></p>
-<p>The installation and usage of this package depends on the SDMTools package which currently no longer is hosted on CRAN. However, it can be installed from Rforge using this command:</p>
-<p><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages('SDMTools', repos = 'http://rforge.net/', source = TRUE)</a></code></p>
-<p>Alternativley, it can also be installed from GitHub using:</p>
-<p><code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github("jjvanderwal/SDMTools")</a></code></p>
-<p>It is the GitHub version of the package which is going to be installed when the SDMTools dependency is not met on a machine during installation of the ForestIndicator packages.</p>
-<p>The ForestIndicators package can then be installed by using the <code>devtools</code> package by entering the following command:</p>
-<p><code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github("openkfw/mapme.forest")</a></code>.</p>
+<p>The tutorial for the usage of the <strong>mapme.forest package</strong> can be found <a href="https://mapme-initiative.github.io/mapme.forest/">here</a>. Please visit this page in order to get to know the API of mapme.forest.</p>
+<p><strong>Installation under Linux</strong></p>
+<p>The mapme.forest package can then be installed by using the <code>remotes</code> package by entering the following command:</p>
+<p><code><a href="https://remotes.r-lib.org/reference/install_github.html">remotes::install_github("mapme-initiative/mapme.forest")</a></code>.</p>
 <p>Additionally, we ship this package with a Dockerfile which can be used to run the packages and its dependencies as a container. When <code>cd</code>ing into the repository, building and running the image is as simple as:</p>
 <p><code>docker build -t mapmeForest:latest .</code></p>
 <p><code>docker run -d -p 8787:8787 -e USER=myuser -e PASSWORD=mypassword gans-deforestation</code></p>
@@ -103,8 +100,7 @@
 </li>
 <li>download and install Rtools from <a href="https://cran.r-project.org/bin/windows/Rtools" class="uri">https://cran.r-project.org/bin/windows/Rtools</a> and make Rtools available on the PATH variable</li>
 <li>install the devtools and git2r packages with ‘install.packages(c(“devtools”, “git2r”))’</li>
-<li>install forestIndicators with the following command replacing <user> and <pass> with your username and password: <code>devtools::install_git("https://innersource.stackato.de/gans/deforestation", credentials = git2r::cred_user_pass("&lt;user&gt;", "&lt;pass&gt;")</code> and close R Studio afterwards</pass></user>
-</li>
+<li>install mapme.forest with the following command: <code><a href="https://remotes.r-lib.org/reference/install_github.html">remotes::install_github("mapme-initiative/mapme.forest")</a></code> and close R Studio afterwards</li>
 </ul>
 <p>Now the package has been sucessfully installed, however, you are not necessarily 100% ready to use it. Since some of the function use gdal system calls we additionally need a valid gdal installation on your machine.</p>
 <ul>
@@ -149,8 +145,7 @@
     <div class="license">
 <h2>License</h2>
 <ul class="list-unstyled">
-<li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></small></li>
+<li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
 </ul>
 </div>
 <div class="developers">

@@ -1,3 +1,5 @@
+![check](https://github.com/mapme-initiative/mapme.forest/workflows/R-CMD-check/badge.svg)
+
 **About**
 
 The mapme.forest package helps you to understand past deforestation dynamics around the world. Next to calculating areal statistics about

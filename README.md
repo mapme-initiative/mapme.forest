@@ -3,7 +3,7 @@
 
 **About**
 
-The mapme.forest package helps you to understand past deforestation dynamics around the world. Next to calculating areal statistics about
+The mapme.forest package helps understanding recent and past deforestation dynamics around the world. Next to calculating areal statistics about
 the amount of deforestation in a given space, the tool provides you with the ability to calculate a high number of common fragmentation
 statistics of a given landscape.
 

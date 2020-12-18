@@ -16,3 +16,4 @@
 ^vignettes/frag_stats_cache$
 ^LICENSE\.md$
 ^\.github$
+^assets$

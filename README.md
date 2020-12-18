@@ -1,5 +1,8 @@
+![mapme-logo](assets/mapme-logo.png)
+
 ![check](https://github.com/mapme-initiative/mapme.forest/workflows/R-CMD-check/badge.svg)
 [![Coverage Status](https://img.shields.io/codecov/c/github/mapme-initiative/mapme.forest/master.svg)](https://codecov.io/github/mapme-initiative/mapme.forest?branch=master)
+
 
 **About**
 

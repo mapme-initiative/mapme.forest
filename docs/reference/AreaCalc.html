@@ -8,6 +8,13 @@
 
 <title>Area of forest change — AreaCalc • mapme.forest</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -42,6 +49,7 @@
 <meta property="og:title" content="Area of forest change — AreaCalc" />
 <meta property="og:description" content="Calculates the changes in forest area based on a rasterObject forest
   mask and a SpatialPolygonsDataFrame containing areas of interest." />
+<meta property="og:image" content="/logo.png" />
 
 
 
@@ -111,7 +119,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/mapme-initiative/mapme.forest">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -221,7 +234,7 @@ are represented by pixels. For GFW data and the default these are 2001 to 2018.<
 </div><div class='output co'>#&gt; <span class='message'>Loading required package: sp</span></div><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>mapme.forest</span><span class='op'>)</span>
 
 <span class='va'>aoi</span> <span class='op'>=</span> <span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_read.html'>st_read</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"extdata"</span>, <span class='st'>"aoi_polys.gpkg"</span>, package <span class='op'>=</span> <span class='st'>"mapme.forest"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Reading layer `aoi_polys' from data source `/tmp/RtmpjG8SMp/temp_libpath1d4d153ab936/mapme.forest/extdata/aoi_polys.gpkg' using driver `GPKG'
+</div><div class='output co'>#&gt; Reading layer `aoi_polys' from data source `/tmp/RtmpQjMW2C/temp_libpath98c75a468957/mapme.forest/extdata/aoi_polys.gpkg' using driver `GPKG'
 #&gt; Simple feature collection with 8 features and 1 field
 #&gt; geometry type:  POLYGON
 #&gt; dimension:      XY
@@ -275,7 +288,7 @@ are represented by pixels. For GFW data and the default these are 2001 to 2018.<
 
       <footer>
       <div class="copyright">
-  <p>Developed by KfW Bankengruppe, Darius Görgen, Fabian Löw.</p>
+  <p>Developed by <a href='https://www.kfw-entwicklungsbank.de/International-financing/KfW-Entwicklungsbank/'>KfW Bankengruppe</a>, <a href='http://dariusgoergen.com/'>Darius Görgen</a>, <a href='https://maptailor.net/'>Fabian Löw</a>.</p>
 </div>
 
 <div class="pkgdown">

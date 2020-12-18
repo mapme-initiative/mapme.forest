@@ -6,6 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>An R package for deforestation analysis • mapme.forest</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -13,6 +19,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="An R package for deforestation analysis">
 <meta property="og:description" content="This package helps you to analyses deforestation dynamics around the globe using Global Forest Watch (GFW) data">
+<meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -68,7 +75,14 @@
   </ul>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/mapme-initiative/mapme.forest">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -80,18 +94,34 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
+<div id="mapmeforest-" class="section level1">
+<div class="page-header"><h1 class="hasAnchor">
+<a href="#mapmeforest-" class="anchor"></a>mapme.forest <img src="reference/figures/logo.png" align="right" height="110">
+</h1></div>
+<!-- badges: start -->
 
-<p><strong>About</strong></p>
-<p>The mapme.forest package helps you to understand past deforestation dynamics around the world. Next to calculating areal statistics about the amount of deforestation in a given space, the tool provides you with the ability to calculate a high number of common fragmentation statistics of a given landscape.</p>
-<p><strong>Tutorial</strong></p>
+<div id="about" class="section level2">
+<h2 class="hasAnchor">
+<a href="#about" class="anchor"></a>About</h2>
+<p>The mapme.forest package helps understanding recent and past deforestation dynamics around the world. Next to calculating areal statistics about the amount of deforestation in a given space, the tool provides you with the ability to calculate a high number of common fragmentation statistics of a given landscape.</p>
+</div>
+<div id="tutorial" class="section level2">
+<h2 class="hasAnchor">
+<a href="#tutorial" class="anchor"></a>Tutorial</h2>
 <p>The tutorial for the usage of the <strong>mapme.forest package</strong> can be found <a href="https://mapme-initiative.github.io/mapme.forest/">here</a>. Please visit this page in order to get to know the API of mapme.forest.</p>
-<p><strong>Installation under Linux</strong></p>
+</div>
+<div id="installation-instructions-under-linux" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installation-instructions-under-linux" class="anchor"></a>Installation instructions under Linux</h2>
 <p>The mapme.forest package can then be installed by using the <code>remotes</code> package by entering the following command:</p>
 <p><code><a href="https://remotes.r-lib.org/reference/install_github.html">remotes::install_github("mapme-initiative/mapme.forest")</a></code>.</p>
 <p>Additionally, we ship this package with a Dockerfile which can be used to run the packages and its dependencies as a container. When <code>cd</code>ing into the repository, building and running the image is as simple as:</p>
 <p><code>docker build -t mapmeForest:latest .</code></p>
 <p><code>docker run -d -p 8787:8787 -e USER=myuser -e PASSWORD=mypassword gans-deforestation</code></p>
-<p><strong>Installation instructions under Windows</strong></p>
+</div>
+<div id="installation-instructions-under-windows" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installation-instructions-under-windows" class="anchor"></a>Installation instructions under Windows</h2>
 <p>In our installation instruction we assume that you are going to use R Studio as an IDE. You need to have some software pre-installed software to be able to install the forestIndicator package.</p>
 <ul>
 <li>download and install R &gt;= 3.5.x from <a href="https://cran.rstudio.com/" class="uri">https://cran.rstudio.com/</a>
@@ -99,7 +129,7 @@
 <li>download and install R Studio from <a href="https://rstudio.com/products/rstudio/download/#download" class="uri">https://rstudio.com/products/rstudio/download/#download</a>
 </li>
 <li>download and install Rtools from <a href="https://cran.r-project.org/bin/windows/Rtools" class="uri">https://cran.r-project.org/bin/windows/Rtools</a> and make Rtools available on the PATH variable</li>
-<li>install the devtools and git2r packages with ‘install.packages(c(“devtools”, “git2r”))’</li>
+<li>install the remotes packages with ‘install.packages(“remotes”)’</li>
 <li>install mapme.forest with the following command: <code><a href="https://remotes.r-lib.org/reference/install_github.html">remotes::install_github("mapme-initiative/mapme.forest")</a></code> and close R Studio afterwards</li>
 </ul>
 <p>Now the package has been sucessfully installed, however, you are not necessarily 100% ready to use it. Since some of the function use gdal system calls we additionally need a valid gdal installation on your machine.</p>
@@ -140,9 +170,24 @@
 <li>note that the setup outlined above might not be your preffered setup. Of course you can use different setups, e.g. by using virtual anaconda environments. However, this would be fairly advanced setups so we do not outline them here. The important take-away message four you when you are going to use a different setup is that gdal_calc.py as well as the usual gdal command line tools need to be available and executable.</li>
 </ul>
 </div>
+</div>
+  </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <div class="license">
+    <div class="links">
+<h2>Links</h2>
+<ul class="list-unstyled">
+<li>Learn more about MAPME at <br><a href="https://mapme-initiative.org/">https://​mapme-initiative.org/​</a>
+</li>
+<li>Read the Open Source Guide at <br><a href="https://github.com/mapme-initiative/mapme.osg">https://​github.com/​mapme-initiative/​mapme.osg</a>
+</li>
+<li>Browse source code at <br><a href="https://github.com/mapme-initiative/mapme.forest">https://​github.com/​mapme-initiative/​mapme.forest</a>
+</li>
+<li>File an issue at <br><a href="https://github.com/mapme-initiative/mapme.forest/issues">https://​github.com/​mapme-initiative/​mapme.forest/​issues</a>
+</li>
+</ul>
+</div>
+<div class="license">
 <h2>License</h2>
 <ul class="list-unstyled">
 <li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
@@ -151,18 +196,27 @@
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>KfW Bankengruppe <br><small class="roles"> Maintainer, copyright holder </small>  </li>
-<li>Darius Görgen <br><small class="roles"> Author </small>  </li>
-<li>Fabian Löw <br><small class="roles"> Author </small>  </li>
+<li>
+<a href="https://www.kfw-entwicklungsbank.de/International-financing/KfW-Entwicklungsbank/">KfW Bankengruppe</a> <br><small class="roles"> Maintainer, copyright holder </small>  </li>
+<li>
+<a href="http://dariusgoergen.com/">Darius Görgen</a> <br><small class="roles"> Author </small>  </li>
+<li>
+<a href="https://maptailor.net/">Fabian Löw</a> <br><small class="roles"> Author </small>  </li>
 </ul>
 </div>
 
-  </div>
+  <div class="dev-status">
+<h2>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://codecov.io/github/mapme-initiative/mapme.forest?branch=master"><img src="https://img.shields.io/codecov/c/github/mapme-initiative/mapme.forest/master.svg" alt="Coverage Status"></a></li>
+</ul>
+</div>
+</div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by KfW Bankengruppe, Darius Görgen, Fabian Löw.</p>
+  <p>Developed by <a href="https://www.kfw-entwicklungsbank.de/International-financing/KfW-Entwicklungsbank/">KfW Bankengruppe</a>, <a href="http://dariusgoergen.com/">Darius Görgen</a>, <a href="https://maptailor.net/">Fabian Löw</a>.</p>
 </div>
 
 <div class="pkgdown">

@@ -80,20 +80,34 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
+<div id="mapmeforest-" class="section level1">
+<div class="page-header"><h1 class="hasAnchor">
+<a href="#mapmeforest-" class="anchor"></a>mapme.forest <img src="reference/figures/mapme-logo.png" align="right" height="138.5">
+</h1></div>
+<!-- badges: start -->
 
-<p><img src="assets/mapme-logo.png" alt="mapme-logo"></p>
-<p><img src="https://github.com/mapme-initiative/mapme.forest/workflows/R-CMD-check/badge.svg" alt="check"><a href="https://codecov.io/github/mapme-initiative/mapme.forest?branch=master"><img src="https://img.shields.io/codecov/c/github/mapme-initiative/mapme.forest/master.svg" alt="Coverage Status"></a></p>
-<p><strong>About</strong></p>
+<div id="about" class="section level2">
+<h2 class="hasAnchor">
+<a href="#about" class="anchor"></a>About</h2>
 <p>The mapme.forest package helps understanding recent and past deforestation dynamics around the world. Next to calculating areal statistics about the amount of deforestation in a given space, the tool provides you with the ability to calculate a high number of common fragmentation statistics of a given landscape.</p>
-<p><strong>Tutorial</strong></p>
+</div>
+<div id="tutorial" class="section level2">
+<h2 class="hasAnchor">
+<a href="#tutorial" class="anchor"></a>Tutorial</h2>
 <p>The tutorial for the usage of the <strong>mapme.forest package</strong> can be found <a href="https://mapme-initiative.github.io/mapme.forest/">here</a>. Please visit this page in order to get to know the API of mapme.forest.</p>
-<p><strong>Installation instructions under Linux</strong></p>
+</div>
+<div id="installation-instructions-under-linux" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installation-instructions-under-linux" class="anchor"></a>Installation instructions under Linux</h2>
 <p>The mapme.forest package can then be installed by using the <code>remotes</code> package by entering the following command:</p>
 <p><code><a href="https://remotes.r-lib.org/reference/install_github.html">remotes::install_github("mapme-initiative/mapme.forest")</a></code>.</p>
 <p>Additionally, we ship this package with a Dockerfile which can be used to run the packages and its dependencies as a container. When <code>cd</code>ing into the repository, building and running the image is as simple as:</p>
 <p><code>docker build -t mapmeForest:latest .</code></p>
 <p><code>docker run -d -p 8787:8787 -e USER=myuser -e PASSWORD=mypassword gans-deforestation</code></p>
-<p><strong>Installation instructions under Windows</strong></p>
+</div>
+<div id="installation-instructions-under-windows" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installation-instructions-under-windows" class="anchor"></a>Installation instructions under Windows</h2>
 <p>In our installation instruction we assume that you are going to use R Studio as an IDE. You need to have some software pre-installed software to be able to install the forestIndicator package.</p>
 <ul>
 <li>download and install R &gt;= 3.5.x from <a href="https://cran.rstudio.com/" class="uri">https://cran.rstudio.com/</a>
@@ -142,6 +156,8 @@
 <li>note that the setup outlined above might not be your preffered setup. Of course you can use different setups, e.g. by using virtual anaconda environments. However, this would be fairly advanced setups so we do not outline them here. The important take-away message four you when you are going to use a different setup is that gdal_calc.py as well as the usual gdal command line tools need to be available and executable.</li>
 </ul>
 </div>
+</div>
+  </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="license">
@@ -159,7 +175,13 @@
 </ul>
 </div>
 
-  </div>
+  <div class="dev-status">
+<h2>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://codecov.io/github/mapme-initiative/mapme.forest?branch=master"><img src="https://img.shields.io/codecov/c/github/mapme-initiative/mapme.forest/master.svg" alt="Coverage Status"></a></li>
+</ul>
+</div>
+</div>
 </div>
 
 

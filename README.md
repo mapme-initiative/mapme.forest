@@ -1,22 +1,23 @@
-![mapme-logo](assets/mapme-logo.png)
+# mapme.forest <img src='man/figures/mapme-logo.png' align="right" height="138.5" />
 
+<!-- badges: start -->
 ![check](https://github.com/mapme-initiative/mapme.forest/workflows/R-CMD-check/badge.svg)
 [![Coverage Status](https://img.shields.io/codecov/c/github/mapme-initiative/mapme.forest/master.svg)](https://codecov.io/github/mapme-initiative/mapme.forest?branch=master)
+<!-- badges: end -->
 
-
-**About**
+## About
 
 The mapme.forest package helps understanding recent and past deforestation dynamics around the world. Next to calculating areal statistics about
 the amount of deforestation in a given space, the tool provides you with the ability to calculate a high number of common fragmentation
 statistics of a given landscape.
 
-**Tutorial**
+## Tutorial
 
 The tutorial for the usage of the **mapme.forest package** can be found [here](https://mapme-initiative.github.io/mapme.forest/). Please visit
 this page in order to get to know the API of mapme.forest.
 
 
-**Installation instructions under Linux**
+## Installation instructions under Linux 
 
 The mapme.forest package can then be installed by using the `remotes` package by entering the following command:
 
@@ -28,7 +29,7 @@ Additionally, we ship this package with a Dockerfile which can be used to run th
 
 `docker run -d -p 8787:8787 -e USER=myuser -e PASSWORD=mypassword gans-deforestation`
 
-**Installation instructions under Windows**
+## Installation instructions under Windows
 
 In our installation instruction we assume that you are going to use R Studio as an IDE. You need to have some software pre-installed software to be able to install the forestIndicator package.
 

@@ -17,11 +17,11 @@
 #'   importance of both, a high number of CPUs and large enough RAM.
 #' @author Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 #' \cr
-#' \emph{Maintainer:} KfW FZ Evaluierung \email{FZ-Evaluierung@kfw.de}
+#' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr
 #' \emph{Contact Person:} Dr. Johannes Schielein
 #' \cr
-#' \emph{Copyright:} KfW Bankengruppe
+#' \emph{Copyright:} MAPME-Initiative
 #' \cr
 #' \emph{License:} GPL-3
 #'
@@ -193,11 +193,11 @@ LossCalc <- function (inputForestMap=NULL,
 #' @importFrom exactextractr exact_extract
 #' @author Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 #' \cr
-#' \emph{Maintainer:} KfW FZ Evaluierung \email{FZ-Evaluierung@kfw.de}
+#' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr
 #' \emph{Contact Person:} Dr. Johannes Schielein
 #' \cr
-#' \emph{Copyright:} KfW Bankengruppe
+#' \emph{Copyright:} MAPME-Initiative
 #' \cr
 #' \emph{License:} GPL-3
 loss_calc_seq <- function(inputForestMap, inputLossMap, studysite, years, unis, latlon){

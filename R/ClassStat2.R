@@ -19,11 +19,11 @@
 #' @return A raster stack with the two layers per class in the 'classValue' object.
 #' @author Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 #' \cr
-#' \emph{Maintainer:} KfW FZ Evaluierung \email{FZ-Evaluierung@kfw.de}
+#' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr
 #' \emph{Contact Person:} Dr. Johannes Schielein
 #' \cr
-#' \emph{Copyright:} KfW Bankengruppe
+#' \emph{Copyright:} MAPME-Initiative
 #' \cr
 #' \emph{License:} GPL-3
 #'
@@ -172,11 +172,11 @@ ClassStat2 <- function (inputLayer,
 #' @export
 #' @author Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 #' \cr
-#' \emph{Maintainer:} KfW FZ Evaluierung \email{FZ-Evaluierung@kfw.de}
+#' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr
 #' \emph{Contact Person:} Dr. Johannes Schielein
 #' \cr
-#' \emph{Copyright:} KfW Bankengruppe
+#' \emph{Copyright:} MAPME-Initiative
 #' \cr
 #' \emph{License:} GPL-3
 #'
@@ -213,11 +213,11 @@ aggregation.index = function(a, g) {
 #' @export
 #' @author Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 #' \cr
-#' \emph{Maintainer:} KfW FZ Evaluierung \email{FZ-Evaluierung@kfw.de}
+#' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr
 #' \emph{Contact Person:} Dr. Johannes Schielein
 #' \cr
-#' \emph{Copyright:} KfW Bankengruppe
+#' \emph{Copyright:} MAPME-Initiative
 #' \cr
 #' \emph{License:} GPL-3
 shape.index = function(a, p) {

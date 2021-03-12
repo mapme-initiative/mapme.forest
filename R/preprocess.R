@@ -30,11 +30,11 @@
 #' @importFrom raster clump freq
 #' @author Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 #' \cr
-#' \emph{Maintainer:} KfW FZ Evaluierung \email{FZ-Evaluierung@kfw.de}
+#' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr
 #' \emph{Contact Person:} Dr. Johannes Schielein
 #' \cr
-#' \emph{Copyright:} KfW Bankengruppe
+#' \emph{Copyright:} MAPME-Initiative
 #' \cr
 #' \emph{License:} GPL-3
 #'
@@ -105,11 +105,11 @@ prepTC <- function(inputForestMap,
 #'  will be consectuivley set to 0. The result is a yearly binary classification of forest cover.
 #' @author Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 #' \cr
-#' \emph{Maintainer:} KfW FZ Evaluierung \email{FZ-Evaluierung@kfw.de}
+#' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr
 #' \emph{Contact Person:} Dr. Johannes Schielein
 #' \cr
-#' \emph{Copyright:} KfW Bankengruppe
+#' \emph{Copyright:} MAPME-Initiative
 #' \cr
 #' \emph{License:} GPL-3
 #'

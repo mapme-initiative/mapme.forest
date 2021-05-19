@@ -212,21 +212,18 @@ downloadfGFW <- function(shape,
   for (p in parameters){
     tmp = file.path(.tmpdir, outfiles[grep(p, outfiles)])
     filename = file.path(outdir, paste0(basename, "_", p, ".tif"))
+    vrt_name = file.path(.tmpdir, "vrt.vrt")
 
     if(Sys.info()["sysname"] == "Windows"){
       tmp = chartr("/", "\\", tmp)
       filename = chartr("/", "\\", filename)
+      vrt_name = chartr("/", "\\",  vrt_name)
     }
 
     if(file.exists(filename)){
       message("Output file ", filename, " already exists. Skipping translation...")
       next
     } else {
-
-      vrt_name = file.path(.tmpdir, "vrt.vrt")
-      if(Sys.info()["sysname"] == "Windows"){
-        vrt_name = chartr("/", "\\",  vrt_name)
-      }
 
       gdalUtils::gdalbuildvrt(output.vrt = vrt_name, gdalfile = tmp)
       gdalUtils::gdal_translate(src_dataset = vrt_name,

@@ -191,8 +191,13 @@ downloadfGFW <- function(shape,
         file.copy(from = localname, to = localname2)
         ts = raster(localname)
         ts = paste(c(ncol(ts), nrow(ts)), collapse = " ")
-        command = paste0('gdal_rasterize -a value -a_nodata 0 -co "COMPRESS=LZW" -ot Float32 -ts ',ts, ' ', file.path(.tmpdir, "tmp.gpkg"), ' ', localname2)
-        system(command)
+        gdalUtils::gdal_rasterize(src_datasource = file.path(.tmpdir, "tmp.gpkg"),
+                       dst_filename = localname2,
+                       a = "value",
+                       a_nodata = 0,
+                       co = list("COMPRESS" = "LZW"),
+                       ot = "Float32",
+                       ts = ts)
         file.remove(file.path(.tmpdir, "tmp.gpkg"))
       }
     }
@@ -211,10 +216,12 @@ downloadfGFW <- function(shape,
       message("Output file ", filename, " already exists. Skipping translation...")
       next
     } else {
-      command = paste0("gdalbuildvrt ", file.path(.tmpdir, "vrt.vrt "), paste(tmp, collapse = " "))
-      system(command)
-      command = paste0("gdal_translate -ot UInt16 -co COMPRESS=LZW -co BIGTIFF=YES ", file.path(.tmpdir, "vrt.vrt "), filename)
-      system(command)
+      gdalUtils::gdalbuildvrt(output.vrt = file.path(.tmpdir, "vrt.vrt"), gdalfile = tmp)
+      gdalUtils::gdal_translate(src_dataset = file.path(.tmpdir, "vrt.vrt"),
+                     dst_dataset = filename,
+                     ot = "UInt16",
+                     co = c("COMPRESS=LZW", "BIGTIFF=YES")
+      )
     }
   }
 

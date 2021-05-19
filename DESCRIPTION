@@ -38,7 +38,8 @@ Imports:
     rgrass7,
     stringr,
     rgdal,
-    lwgeom
+    lwgeom,
+    gdalUtils
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,

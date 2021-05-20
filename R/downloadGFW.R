@@ -61,7 +61,7 @@
 #'                             basename = "pkgTest",
 #'                             outdir = "./data/",
 #'                             keepTmpFiles = T,
-#'                             .tmpdir = "./data/tmp/")
+#'                             .tmpdir = "./data/tmp")
 #'
 #' # resulting rasters are not automatically cropped to the extent of aoi
 #' rasters = stack(lapply(raster_files, function(f){
@@ -212,12 +212,6 @@ downloadfGFW <- function(shape,
   for (p in parameters){
     tmp = file.path(.tmpdir, outfiles[grep(p, outfiles)])
     filename = file.path(outdir, paste0(basename, "_", p, ".tif"))
-
-    if(Sys.info()["sysname"] == "Windows"){
-      tmp = chartr("/", "\\", tmp)
-      filename = chartr("/", "\\", filename)
-    }
-
     if(file.exists(filename)){
       message("Output file ", filename, " already exists. Skipping translation...")
       next

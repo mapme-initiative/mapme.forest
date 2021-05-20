@@ -166,7 +166,12 @@ downloadfGFW <- function(shape,
           print(paste0("File ", localname, " already exists. Skipping download."))
           next
         } else {
-          download.file(urls[i], localname)
+
+          if(Sys.info()["sysname"] == "Windwos"){
+            download.file(urls[i], localname, mode = "wb")
+          } else {
+            download.file(urls[i], localname)
+          }
         }
       }
 
@@ -178,7 +183,11 @@ downloadfGFW <- function(shape,
           print(paste0("File ", localname, " already exists. Skipping download."))
           next
         } else {
-          download.file(urls[i], localname)
+          if(Sys.info()["sysname"] == "Windwos"){
+            download.file(urls[i], localname, mode = "wb")
+          } else {
+            download.file(urls[i], localname)
+          }
         }
       }
 
@@ -192,12 +201,12 @@ downloadfGFW <- function(shape,
         ts = raster(localname)
         ts = paste(c(ncol(ts), nrow(ts)), collapse = " ")
         gdalUtils::gdal_rasterize(src_datasource = file.path(.tmpdir, "tmp.gpkg"),
-                       dst_filename = localname2,
-                       a = "value",
-                       a_nodata = 0,
-                       co = list("COMPRESS" = "LZW"),
-                       ot = "Float32",
-                       ts = ts)
+                                  dst_filename = localname2,
+                                  a = "value",
+                                  a_nodata = 0,
+                                  co = list("COMPRESS" = "LZW"),
+                                  ot = "Float32",
+                                  ts = ts)
         file.remove(file.path(.tmpdir, "tmp.gpkg"))
       }
     }
@@ -218,9 +227,9 @@ downloadfGFW <- function(shape,
     } else {
       gdalUtils::gdalbuildvrt(output.vrt = file.path(.tmpdir, "vrt.vrt"), gdalfile = tmp)
       gdalUtils::gdal_translate(src_dataset = file.path(.tmpdir, "vrt.vrt"),
-                     dst_dataset = filename,
-                     ot = "UInt16",
-                     co = c("COMPRESS=LZW", "BIGTIFF=YES")
+                                dst_dataset = filename,
+                                ot = "UInt16",
+                                co = c("COMPRESS=LZW", "BIGTIFF=YES")
       )
     }
   }

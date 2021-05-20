@@ -222,14 +222,8 @@ downloadfGFW <- function(shape,
       message("Output file ", filename, " already exists. Skipping translation...")
       next
     } else {
-
-      vrt_name = file.path(.tmpdir, "vrt.vrt")
-      if(Sys.info()["sysname"] == "Windows"){
-        vrt_name = chartr("/", "\\",  vrt_name)
-      }
-
-      gdalUtils::gdalbuildvrt(output.vrt = vrt_name, gdalfile = tmp)
-      gdalUtils::gdal_translate(src_dataset = vrt_name,
+      gdalUtils::gdalbuildvrt(output.vrt = file.path(.tmpdir, "vrt.vrt"), gdalfile = tmp)
+      gdalUtils::gdal_translate(src_dataset = file.path(.tmpdir, "vrt.vrt"),
                      dst_dataset = filename,
                      ot = "UInt16",
                      co = c("COMPRESS=LZW", "BIGTIFF=YES")
@@ -238,7 +232,7 @@ downloadfGFW <- function(shape,
   }
 
   if (!keepTmpFiles){
-    ls = c(file.path(.tmpdir, outfiles), vrt_name)
+    ls = c(file.path(.tmpdir, outfiles), file.path(.tmpdir, "vrt.vrt"))
     file.remove(ls)
     file.remove(.tmpdir)
   }

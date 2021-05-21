@@ -98,7 +98,7 @@
       <h1 data-toc-skip>01 Download &amp; Preprocessing</h1>
                         <h4 class="author">Darius Görgen</h4>
             
-            <h4 class="date">2021-03-12</h4>
+            <h4 class="date">2021-05-21</h4>
       
       
       <div class="hidden name"><code>GFW.Rmd</code></div>
@@ -194,22 +194,20 @@
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html">st_crs</a></span><span class="op">(</span><span class="va">treeCover_clumps</span><span class="op">)</span> <span class="co"># retrives the coordinate reference system</span>
 <span class="co">#&gt; Coordinate Reference System:</span>
-<span class="co">#&gt;   User input: +proj=longlat +datum=WGS84 +no_defs </span>
+<span class="co">#&gt;   User input: WGS 84 (with axis order normalized for visualization) </span>
 <span class="co">#&gt;   wkt:</span>
-<span class="co">#&gt; GEOGCRS["unknown",</span>
+<span class="co">#&gt; GEOGCRS["WGS 84 (with axis order normalized for visualization)",</span>
 <span class="co">#&gt;     DATUM["World Geodetic System 1984",</span>
 <span class="co">#&gt;         ELLIPSOID["WGS 84",6378137,298.257223563,</span>
-<span class="co">#&gt;             LENGTHUNIT["metre",1]],</span>
-<span class="co">#&gt;         ID["EPSG",6326]],</span>
+<span class="co">#&gt;             LENGTHUNIT["metre",1]]],</span>
 <span class="co">#&gt;     PRIMEM["Greenwich",0,</span>
-<span class="co">#&gt;         ANGLEUNIT["degree",0.0174532925199433],</span>
-<span class="co">#&gt;         ID["EPSG",8901]],</span>
+<span class="co">#&gt;         ANGLEUNIT["degree",0.0174532925199433]],</span>
 <span class="co">#&gt;     CS[ellipsoidal,2],</span>
-<span class="co">#&gt;         AXIS["longitude",east,</span>
+<span class="co">#&gt;         AXIS["geodetic longitude (Lon)",east,</span>
 <span class="co">#&gt;             ORDER[1],</span>
 <span class="co">#&gt;             ANGLEUNIT["degree",0.0174532925199433,</span>
 <span class="co">#&gt;                 ID["EPSG",9122]]],</span>
-<span class="co">#&gt;         AXIS["latitude",north,</span>
+<span class="co">#&gt;         AXIS["geodetic latitude (Lat)",north,</span>
 <span class="co">#&gt;             ORDER[2],</span>
 <span class="co">#&gt;             ANGLEUNIT["degree",0.0174532925199433,</span>
 <span class="co">#&gt;                 ID["EPSG",9122]]]]</span>

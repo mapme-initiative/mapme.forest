@@ -85,14 +85,13 @@ statsGRASS <- function(grass, addon_base,
 
     # check if output file is already created
     id = ids[i]
+    outname = ""
     if(saveRaster){
       outname = file.path(outdir, paste0(id, ".tif"))
       if(file.exists(outname)){
         message("File already exists in outdir. Using this file to calculate zonal statistics.")
       }
     }
-
-
     # write polygon to disk
     poly = st_transform(polies[[i]], proj_raster)
     st_write(poly, file.path(rundir, paste0("poly_",i, ".gpkg")))

@@ -16,7 +16,8 @@ statsGRASS(
   thresholdCover,
   years,
   outdir = NULL,
-  saveRaster
+  saveRaster,
+  hideoutput = FALSE
 )
 }
 \arguments{
@@ -58,6 +59,8 @@ will be written to. If files with the same name as specified by the values in
 \code{idcol} are present, their calculation is skipped without warning.}
 
 \item{saveRaster}{Logical indicating if raster are to be saved to disk}
+
+\item{hideoutput}{Logical indicating if grass output should not be printed in console.}
 }
 \description{
 Translation pipeline using GRASS

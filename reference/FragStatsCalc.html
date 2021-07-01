@@ -123,7 +123,7 @@ types identified in a raster*Object." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/mapme-initiative/mapme.forest">
-    <span class="fas fa-github fa-lg"></span>
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -294,7 +294,9 @@ features will be identified by the column specified in <code>polyName</code>.</p
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>mapme.forest</span><span class='op'>)</span>
 
 <span class='va'>aoi</span> <span class='op'>=</span> <span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_read.html'>st_read</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"extdata"</span>, <span class='st'>"aoi_polys.gpkg"</span>, package <span class='op'>=</span> <span class='st'>"mapme.forest"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Reading layer `aoi_polys' from data source `/Users/runner/work/_temp/Library/mapme.forest/extdata/aoi_polys.gpkg' using driver `GPKG'
+</div><div class='output co'>#&gt; Reading layer `aoi_polys' from data source 
+#&gt;   `/home/runner/work/_temp/Library/mapme.forest/extdata/aoi_polys.gpkg' 
+#&gt;   using driver `GPKG'
 #&gt; Simple feature collection with 8 features and 1 field
 #&gt; Geometry type: POLYGON
 #&gt; Dimension:     XY
@@ -337,7 +339,7 @@ features will be identified by the column specified in <code>polyName</code>.</p
 #&gt;  $ n.patches_y_.2017     : num 16
 #&gt;  $ n.patches_y_.2018     : num 16
 #&gt;  $ patch.density_Dif     : num 1.88e-05
-#&gt;  $ patch.density_Sig     : num 0.0396
+#&gt;  $ patch.density_Sig     : num 0.019
 #&gt;  $ patch.density_Slope   : num 1.18e-06
 #&gt;  $ patch.density_y_.2000 : num 1.26e-06
 #&gt;  $ patch.density_y_.2001 : num 1.26e-06

@@ -120,7 +120,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/mapme-initiative/mapme.forest">
-    <span class="fas fa-github fa-lg"></span>
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -158,7 +158,8 @@
   <span class='va'>thresholdCover</span>,
   <span class='va'>years</span>,
   outdir <span class='op'>=</span> <span class='cn'>NULL</span>,
-  <span class='va'>saveRaster</span>
+  <span class='va'>saveRaster</span>,
+  hideoutput <span class='op'>=</span> <span class='cn'>FALSE</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -226,6 +227,10 @@ will be written to. If files with the same name as specified by the values in
     <tr>
       <th>saveRaster</th>
       <td><p>Logical indicating if raster are to be saved to disk</p></td>
+    </tr>
+    <tr>
+      <th>hideoutput</th>
+      <td><p>Logical indicating if grass output should not be printed in console.</p></td>
     </tr>
     </table>
 

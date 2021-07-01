@@ -65,7 +65,7 @@ jobs:
         
       - name: Install system deps on macOS 
         if: runner.os == 'macOS'
-        run: brew install gdal
+        run: brew install gdal proj
 
       - name: Install dependencies
         run: |

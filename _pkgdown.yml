@@ -1,0 +1,27 @@
+home:
+  title: An R package for deforestation analysis
+  description: This package helps you to analyses deforestation dynamics around the globe using Global Forest Watch (GFW) data
+  links:
+  - text: Learn more about MAPME
+    href: https://mapme-initiative.org/
+  - text: Read the Open Source Guide
+    href: https://github.com/mapme-initiative/mapme.osg
+  - text: Browse source code
+    href: https://github.com/mapme-initiative/mapme.forest
+  - text: File an issue
+    href: https://github.com/mapme-initiative/mapme.forest/issues
+destination: docs
+
+navbar:
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/mapme-initiative/mapme.forest
+
+authors:
+  Darius Görgen:
+    href: http://dariusgoergen.com/
+  Fabian Löw:
+    href: https://maptailor.net/
+  MAPME-Initiative:
+    href: https://mapme-initiative.org/
+

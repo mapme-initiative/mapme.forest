@@ -49,7 +49,8 @@ Suggests:
     plotly,
     tmap,
     R.utils,
-    testthat
+    testthat,
+    pkgdown
 SystemRequirements: 
     GDAL (>= 2.0.1), 
     GEOS (>= 3.4.0),

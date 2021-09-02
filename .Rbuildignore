@@ -1,0 +1,8 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^.github$
+^LICENSE$
+^Dockerfile$
+^_pkgdown.yml$
+^data-raw$
+^init_grass.sh$

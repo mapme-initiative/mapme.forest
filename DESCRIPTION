@@ -3,8 +3,7 @@ Type: Package
 Title: Package to Support Project Evaluation and Planning in the Forest Sector
 Version: 1.0
 Authors@R: c(person("MAPME-Intitiative", role = c("cre", "cph"), email = "contact@mapme-initiative.org"),
-             person(given = "Darius", family = "Görgen", role = "aut", email = "darius.goergen@maptailor.net"),
-             person(given = "Fabian", family = "Löw", role = "aut", email = "fabian.loew@maptailor.net"))
+             person(given = "Darius", family = "Görgen", role = "aut", email = "darius.goergen@maptailor.net"))
 Maintainer: MAPME-Intitiative <contact@mapme-initiative.org>
 Description: This collection of R functions can be used to support projects
   of international development cooperation in planning and evaluating 

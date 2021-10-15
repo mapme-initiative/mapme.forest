@@ -115,7 +115,6 @@ downloadfGFW <- function(shape,
 
   # loop through intersecting tiles and download them to outdir
   file_list = list()
-  co2tiles = read.csv("https://opendata.arcgis.com/datasets/d33587b6aee248faa2f388aaac96f92c_0.csv")
 
   for (n in 1:length(hits)){
 
@@ -143,9 +142,21 @@ downloadfGFW <- function(shape,
     urls = paste0(baseurl, filenames)
 
     # read co2 spatial index
-    tiles = as.character(co2tiles$tile_id)
-    target = paste0(max_y, "_", min_x)
-    check = target %in% tiles
+    co2tiles = tryCatch(
+      read.csv("https://opendata.arcgis.com/datasets/d33587b6aee248faa2f388aaac96f92c_0.csv"),
+      error = function(cond){
+        message("CO2 Layers not available. Setting CO2 values to 0")
+        return(NA)
+      }
+    )
+
+    if(!is.na(co2tiles)){
+      tiles = as.character(co2tiles$tile_id)
+      target = paste0(max_y, "_", min_x)
+      check = target %in% tiles
+    } else {
+      check = FALSE
+    }
 
     if (!check){
       #message(paste0("There is no CO2 dataset available for the extent you queried.\n",

@@ -32,7 +32,7 @@
 #'
 #' @return A \code{vector} of type \code{charachter} with all the files matching
 #'  the \code{basename} pattern in the \code{outdir} directory.
-#' @author Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+#' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 #' \cr
 #' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr

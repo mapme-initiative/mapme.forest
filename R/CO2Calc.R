@@ -18,7 +18,7 @@
 #'
 #' @note This function relies heavily on parallization, indicating the
 #'   importance of both, a high number of CPUs and large enough RAM.
-#' @author Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+#' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 #' \cr
 #' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr
@@ -208,7 +208,7 @@ CO2Calc <- function (inputForestMap=NULL,
 #' @importFrom sf st_transform
 #' @importFrom raster projection crop stack
 #' @importFrom exactextractr exact_extract
-#' @author Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+#' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 #' \cr
 #' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr

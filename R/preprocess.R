@@ -28,7 +28,7 @@
 #' @name prepTC
 #' @importFrom igraph graph.edgelist clusters V graph
 #' @importFrom raster clump freq
-#' @author Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+#' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 #' \cr
 #' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr
@@ -103,7 +103,7 @@ prepTC <- function(inputForestMap,
 #'  A value of 0 represents no forest cover, a value of 1 represents forest cover.
 #'  All cell values indicating forest loss in the \code{inputLossMap} object at a given year
 #'  will be consectuivley set to 0. The result is a yearly binary classification of forest cover.
-#' @author Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+#' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 #' \cr
 #' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr

@@ -74,7 +74,7 @@
 #'   statistics and the difference between the first and last observation
 #'   are automatically calculated for every single parameter based on
 #'   \code{\link[trend:sens.slope]{trend:sens.slope}}.
-#' @author Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+#' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 #' \cr
 #' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr
@@ -235,7 +235,7 @@ FragStatsCalc <- function (inputRasterFiles=NULL,
 #' @importFrom raster projection crop
 #' @importFrom trend sens.slope
 #' @keywords internal
-#' @author Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+#' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 #' \cr
 #' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr

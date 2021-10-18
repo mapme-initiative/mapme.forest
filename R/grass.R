@@ -35,7 +35,7 @@
 #' @importFrom rgrass7 initGRASS execGRASS
 #' @importFrom stringr str_sub str_split str_remove
 #' @importFrom dplyr bind_cols
-#' @author Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+#' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 #' \cr
 #' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr

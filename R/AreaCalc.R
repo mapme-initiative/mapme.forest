@@ -33,7 +33,7 @@
 #'
 #' @note This function relies heavily on parallization, indicating the
 #'   importance of both, a high number of CPUs and large enough RAM.
-#' @author Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+#' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 #' \cr
 #' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr
@@ -170,7 +170,7 @@ AreaCalc <- function (inputForestMap=NULL,
 #' @importFrom sf st_transform st_as_sfc st_bbox st_difference st_area
 #' @importFrom raster projection crop area xres yres
 #' @importFrom exactextractr exact_extract
-#' @author Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+#' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 #' \cr
 #' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr

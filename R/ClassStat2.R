@@ -17,7 +17,7 @@
 #' @param FragStats Character vector list of forest fragmentation parameetrs to be calculated.
 #'
 #' @return A raster stack with the two layers per class in the 'classValue' object.
-#' @author Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+#' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 #' \cr
 #' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr
@@ -170,7 +170,7 @@ ClassStat2 <- function (inputLayer,
 #' @return Aggregation index in percent.
 #' @keywords internal
 #' @export
-#' @author Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+#' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 #' \cr
 #' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr
@@ -211,7 +211,7 @@ aggregation.index = function(a, g) {
 #' @return Shape index value
 #' @keywords internal
 #' @export
-#' @author Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+#' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 #' \cr
 #' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr

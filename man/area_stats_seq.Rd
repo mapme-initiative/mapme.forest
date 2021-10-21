@@ -20,7 +20,7 @@ A dataframe with estimated areas
 Forest area calculation single mode (Helper Function)
 }
 \author{
-Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 \cr
 \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 \cr

@@ -20,7 +20,7 @@ the ratio a given raster is not covered by a polygon. Can be used as an indicato
 if further cropping of the raster ca improve calculation time.
 }
 \author{
-Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 \cr
 \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 \cr

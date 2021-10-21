@@ -66,7 +66,7 @@ will be written to. If files with the same name as specified by the values in
 Translation pipeline using GRASS
 }
 \author{
-Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 \cr
 \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 \cr

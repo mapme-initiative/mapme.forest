@@ -24,7 +24,7 @@ A data.frame object with Yearly sums of co2 emissions by tree cover loss
 CO2 emission calculation single mode (Helper Function)
 }
 \author{
-Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 \cr
 \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 \cr

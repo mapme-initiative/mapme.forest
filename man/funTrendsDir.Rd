@@ -17,7 +17,7 @@ This function calculates the sens slope direction at the 95% confidence interval
  in cases where more than 75% of the values ar not NA. Otherwise NA is returned.
 }
 \author{
-Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 \cr
 \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 \cr

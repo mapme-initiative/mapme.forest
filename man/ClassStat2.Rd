@@ -43,7 +43,7 @@ ClassStat2 calculates a user defined set of landscape fragmentation indices for 
  It is heavily based on the \code{\link[SDMTools:ClassStat]{SDMTools:ClassStat}} function.
 }
 \author{
-Darius Görgen, Dr. Fabian Löw (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 \cr
 \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 \cr

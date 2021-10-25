@@ -195,7 +195,7 @@ area_stats_seq <- function(studysite, inputForestMap, latlon){
   # otherwise area is estimated by terra::area()
   if(latlon){
     # approximation of area in km2, see ?terra::area for details
-    rasterIn =  treecover*area(treecover)
+    rasterIn =  treecover*global(cellSize(treecover), "sum")
   }else{
     # uses projected raster units as inputs
     rasterIn =  treecover*(xres(treecover)[1]*yres(treecover)[1])

@@ -220,7 +220,7 @@ loss_calc_seq <- function(inputForestMap, inputLossMap, studysite, years, unis, 
   rm(treecover, index); gc()
 
   # calculate loss for each single observation year
-  DummyAnLoss = rast()
+  DummyAnLoss = rast(lossyear)
   for (i in unis){
     dummy = which.lyr(lossyear == i )
     if(latlon == TRUE){

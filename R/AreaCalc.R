@@ -81,7 +81,7 @@ AreaCalc <- function (inputForestMap=NULL,
 
 
   if (!class(inputForestMap)[1] %in% c("RasterLayer", "RasterStack", "RasterBrick","SpatRaster")){
-    stop(paste0("No valid raster object specified in 'inputForestMap'.\n","Must be of class 'RasterLayer','RasterStack'or 'RasterBrick').\n","See ?AreaCalc for details."))
+    stop(paste0("No valid raster object specified in 'inputForestMap'.\n","Must be of class 'RasterLayer','RasterStack','RasterBrick' or 'Spatraster').\n","See ?AreaCalc for details."))
   }
 
   if (nlyr(inputForestMap) == 0){

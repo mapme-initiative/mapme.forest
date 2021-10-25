@@ -15,11 +15,11 @@
 #'
 #' @note This function relies heavily on parallization, indicating the
 #'   importance of both, a high number of CPUs and large enough RAM.
-#' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+#' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net} Johannes Schielein
 #' \cr
 #' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr
-#' \emph{Contact Person:} Dr. Johannes Schielein
+#' \emph{Contact:} \email{contact@mapme-initiative.org}
 #' \cr
 #' \emph{Copyright:} MAPME-Initiative
 #' \cr
@@ -29,7 +29,7 @@
 #' @export LossCalc
 #' @name LossCalc
 #' @inheritParams AreaCalc
-#' @import raster
+#' @import terra
 #' @importFrom exactextractr exact_extract
 #' @import sf
 #' @importFrom tibble rownames_to_column
@@ -39,13 +39,13 @@
 #'
 #' @examples
 #' library(sf)
-#' library(raster)
+#' library(terra)
 #' library(mapme.forest)
 #'
 #' aoi = st_read(system.file("extdata", "aoi_polys.gpkg", package = "mapme.forest"))
 #' yearlyRaster = stack(system.file("extdata", "pkgTest_yearlyCover.tif",
 #'                                   package = "mapme.forest"))
-#' lossYear = raster(system.file("extdata", "pkgTest_lossyear.tif",
+#' lossYear = rast(system.file("extdata", "pkgTest_lossyear.tif",
 #'                               package = "mapme.forest"))
 #'
 #' result = LossCalc(inputForestMap = yearlyRaster,
@@ -71,15 +71,15 @@ LossCalc <- function (inputForestMap=NULL,
   #--------------------------- CHECK FOR ERROS IN INPUT -----------------------#
 
 
-  if (!class(inputForestMap) %in% c("RasterLayer", "RasterStack", "RasterBrick")){
-    stop(paste0("No valid raster object specified in 'inputForestMap'.\n", "Must be of class 'RasterLayer','RasterStack'or 'RasterBrick').\n", "See ?LossCalc for details."))
+  if (!class(inputForestMap) %in% c("RasterLayer", "RasterStack", "RasterBrick","SpatRaster")){
+    stop(paste0("No valid raster object specified in 'inputForestMap'.\n", "Must be of class 'RasterLayer','RasterStack','RasterBrick' or 'SpatRaster').\n", "See ?LossCalc for details."))
   }
 
-  if (!class(inputLossMap) == "RasterLayer"){
-    stop(paste0("inputLossMap is not a single RasterLayer.\n", "It must be of class 'RasterLayer').\n", "See ?LossCalc for details."))
+  if (!class(inputLossMap) %in% c("RasterLayer", "SpatRaster")){
+    stop(paste0("inputLossMap is not a single RasterLayer.\n", "It must be of class 'RasterLayer' or 'SpatRaster').\n", "See ?LossCalc for details."))
   }
 
-  if(nlayers(inputForestMap) != length(years)){
+  if(nlyr(inputForestMap) != length(years)){
     stop(paste0("Number of layers in inputForestMap and length of years differ. \n", "Make sure that for each year you specify a layer is present in inputForestMap.", "See ?LossCalc for details."))
   }
 
@@ -147,7 +147,7 @@ LossCalc <- function (inputForestMap=NULL,
     }
     #-------------------------------- PREPARING OUTPUT --------------------------#
     # prepare result data
-    LossStats =  as.data.frame(do.call("rbind", LossStats))
+    LossStats =  terra::as.data.frame(do.call("rbind", LossStats))
     colnames(LossStats) = paste0("loss_",unis+2000)
     # add missing years with 0
     for (i in years){
@@ -189,7 +189,7 @@ LossCalc <- function (inputForestMap=NULL,
 #' @export loss_calc_seq
 #' @keywords internal
 #' @importFrom sf st_transform
-#' @importFrom raster projection crop Which area xres yres
+#' @importFrom terra crs crop Which area xres yres
 #' @importFrom exactextractr exact_extract
 #' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 #' \cr
@@ -202,7 +202,7 @@ LossCalc <- function (inputForestMap=NULL,
 #' \emph{License:} GPL-3
 loss_calc_seq <- function(inputForestMap, inputLossMap, studysite, years, unis, latlon){
   # project shape to raster CRS
-  studysite2 <- st_transform(studysite, projection(inputLossMap))
+  studysite2 <- st_transform(studysite, crs(inputLossMap))
   # calculate bounding boxes for raster and shapefile
   ratio = coverratio(inputForestMap, studysite2)
   if(ratio > 10){
@@ -220,15 +220,15 @@ loss_calc_seq <- function(inputForestMap, inputLossMap, studysite, years, unis, 
   rm(treecover, index); gc()
 
   # calculate loss for each single observation year
-  DummyAnLoss = raster()
+  DummyAnLoss = rast()
   for (i in unis){
-    dummy = Which(lossyear == i )
+    dummy = which.lyr(lossyear == i )
     if(latlon == TRUE){
-      dummy = dummy*area(dummy) # raster::area approximates surface area of cells in km2
+      dummy = dummy*cellSize(dummy) # approximates surface area of cells in km2
     } else {
       dummy = dummy*(xres(dummy)*yres(dummy)) # convert to km2, assuming it is square meters
     }
-    DummyAnLoss = addLayer(DummyAnLoss, dummy)
+    DummyAnLoss = add(DummyAnLoss, dummy)
   }
   #---------------------------- ZONAL STATISTICS --------------------------#
   results <- exact_extract(DummyAnLoss, studysite2, "sum")

@@ -189,7 +189,7 @@ LossCalc <- function (inputForestMap=NULL,
 #' @export loss_calc_seq
 #' @keywords internal
 #' @importFrom sf st_transform
-#' @importFrom terra crs crop Which area xres yres
+#' @importFrom terra crs crop which.lyr area xres yres add values cellSize nlyr rast
 #' @importFrom exactextractr exact_extract
 #' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 #' \cr
@@ -228,7 +228,7 @@ loss_calc_seq <- function(inputForestMap, inputLossMap, studysite, years, unis, 
     } else {
       dummy = dummy*(xres(dummy)*yres(dummy)) # convert to km2, assuming it is square meters
     }
-    DummyAnLoss = add(DummyAnLoss, dummy)
+    add(DummyAnLoss) <- dummy
   }
   #---------------------------- ZONAL STATISTICS --------------------------#
   results <- exact_extract(DummyAnLoss, studysite2, "sum")

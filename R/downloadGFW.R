@@ -12,8 +12,8 @@
 #'
 #' @param shape A \code{sfObject} determining the extent for which to get the GFW data.
 #' @param dataset A \code{charachter} specifiying the version of the GFW data to extract.
-#'  Defaults to version 1.6 from 2018. The newer version can be downloaded when
-#'  you specify \code{dataset = "GFW-2019-v1.7"}.
+#'  Defaults to version 1.6 from 2018. A newer version can be downloaded when
+#'  you specify the version e.g. \code{dataset = "GFW-2019-v1.7"}.
 #' @param basename A \code{charachter} which will be added to the resulting
 #'  file names.
 #' @param outdir A \code{charachter} for a local directory for the final outputs.
@@ -32,18 +32,18 @@
 #'
 #' @return A \code{vector} of type \code{charachter} with all the files matching
 #'  the \code{basename} pattern in the \code{outdir} directory.
-#' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+#' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}, Johannes Schielein
 #' \cr
 #' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr
-#' \emph{Contact Person:} Dr. Johannes Schielein
+#' \emph{Contact:} \email{contact@mapme-initiative.org}
 #' \cr
 #' \emph{Copyright:} MAPME-Initiative
 #' \cr
 #' \emph{License:} GPL-3
 #'
 #' @import sf
-#' @import raster
+#' @import terra
 #' @import sp
 #' @importFrom curl has_internet
 #' @importFrom utils download.file
@@ -191,12 +191,12 @@ downloadfGFW <- function(shape,
 
       localname2 = file.path(.tmpdir, filenames[3])
       if(!file.exists(localname2)) {
-        dummy <- raster(localname)
+        dummy <- rast(localname)
         dummy = st_sf(st_as_sfc(st_bbox(dummy)), file.path(.tmpdir, "tmp.gpkg"))
         dummy$value = 0
         st_write(dummy, file.path(.tmpdir, "tmp.gpkg"))
         file.copy(from = localname, to = localname2)
-        ts = raster(localname)
+        ts = rast(localname)
         ts = paste(c(ncol(ts), nrow(ts)), collapse = " ")
         command = paste0('gdal_rasterize -a value -a_nodata 0 -co "COMPRESS=LZW" -ot Float32 -ts ',ts, ' ', file.path(.tmpdir, "tmp.gpkg"), ' ', localname2)
         system(command)

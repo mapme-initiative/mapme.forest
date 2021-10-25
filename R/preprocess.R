@@ -20,6 +20,8 @@
 #'   pixels which are classified as a clump. Any number of pixels smaller than
 #'   this threshold will be classified to NA.
 #'
+#' @param ncores Number of cores to be used in internal calcuation functions. Defaults to 1 core but multiple can be used.
+#'
 #' @return A RasterLayer object with binary values when \code{thresholdCover} was
 #'   specified and with raster cell clumps removed in case \code{thresholdClump} was
 #'   specified. Either one of the parameters can be specified on its own.
@@ -27,22 +29,22 @@
 #' @export prepTC
 #' @name prepTC
 #' @importFrom igraph graph.edgelist clusters V graph
-#' @importFrom raster clump freq
-#' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+#' @importFrom terra patches freq
+#' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}, Johannes Schielein
 #' \cr
 #' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr
-#' \emph{Contact Person:} Dr. Johannes Schielein
+#' \emph{Contact:}  \email{contact@mapme-initiative.org}
 #' \cr
 #' \emph{Copyright:} MAPME-Initiative
 #' \cr
 #' \emph{License:} GPL-3
 #'
 #' @examples
-#' library(raster)
+#' library(terra)
 #' library(mapme.forest)
 #'
-#' treeCover = raster(system.file("extdata", "pkgTest_treecover2000.tif",
+#' treeCover = rast(system.file("extdata", "pkgTest_treecover2000.tif",
 #'                                package = "mapme.forest"))
 #' binaryCover = prepTC(inputForestMap = treeCover,
 #'                              thresholdCover = 75,
@@ -51,14 +53,15 @@
 #'
 prepTC <- function(inputForestMap,
                    thresholdCover=NULL,
-                   thresholdClump=NULL){
+                   thresholdClump=NULL,
+                   ncores = 1){
 
   layer_names = names(inputForestMap)
   # apply threshold cover
   if (!is.null(thresholdCover)){
     # create classification matrix to apply thresholdCover value
     f = function(x) ifelse(x>=thresholdCover, 1, 0)
-    inputForestMap = calc(inputForestMap, f)
+    inputForestMap = app(inputForestMap, f, cores=ncores)
     # filename = paste0(filename, "binary.tif"), datatype = "INT1U"
   }
 
@@ -69,7 +72,7 @@ prepTC <- function(inputForestMap,
     if(unique_vals[1] != 0 | unique_vals[2] != 1 | length(unique_vals) != 2){
       stop("Cannot apply clump removal to raster: Other values than 0 and 1 are supplied!")
     }
-    clummy = clump(inputForestMap, directions = 8)
+    clummy = patches(inputForestMap, directions = 8)
     clumpTmp = data.frame(freq(clummy))
     clumpTmp = clumpTmp[which(clumpTmp$count < thresholdClump), ]
     clumpTmp = as.vector(clumpTmp$value)
@@ -113,16 +116,16 @@ prepTC <- function(inputForestMap,
 #' \cr
 #' \emph{License:} GPL-3
 #'
-#' @importFrom raster values stack reclassify raster addLayer nlayers
+#' @importFrom terra values rast nlyr
 #' @export getTM
 #' @name getTM
 #' @examples
-#' library(raster)
+#' library(terra)
 #' library(mapme.forest)
 #'
-#' binaryCover = raster(system.file("extdata", "pkgTest_binaryCover.tif",
+#' binaryCover = rast(system.file("extdata", "pkgTest_binaryCover.tif",
 #'                                  package = "mapme.forest"))
-#' lossYear = raster(system.file("extdata", "pkgTest_lossyear.tif",
+#' lossYear = rast(system.file("extdata", "pkgTest_lossyear.tif",
 #'                               package = "mapme.forest"))
 #' yearlyMaps = getTM(inputForestMap = binaryCover,
 #'                    inputLossMap = lossYear,
@@ -143,7 +146,7 @@ getTM <- function(inputForestMap,
 
   if (length(unis) == 1 & unis[1] == 0){ # if no forest change occurred, replicate base layer
     message("No forest loss in inputLossMap. Replicating inputForestMap.")
-    binaryList = stack(lapply(1:length(years), function(i) inputForestMap))
+    binaryList = rast(lapply(1:length(years), function(i) inputForestMap))
     names(binaryList) = paste0("y",years)
 
   } else { # when forest loss occurred, calculate binary layers
@@ -161,7 +164,7 @@ getTM <- function(inputForestMap,
                  })
 
     # stack the results and get present and missing years
-    binaryList = stack(tmp)
+    binaryList = rast(tmp)
     names(binaryList) = paste0("y",years)
     rm(tmp)
   }

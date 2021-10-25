@@ -69,7 +69,7 @@ prepTC <- function(inputForestMap,
   if (!is.null(thresholdClump)){
     # check  if only 0s and 1s are present
     unique_vals = unique(inputForestMap)
-    if(unique_vals[1] != 0 | unique_vals[2] != 1 | length(unique_vals) != 2){
+    if(unique_vals[1,] != 0 | unique_vals[2,] != 1 | nrow(unique_vals) != 2){
       stop("Cannot apply clump removal to raster: Other values than 0 and 1 are supplied!")
     }
     clummy = patches(inputForestMap, directions = 8)

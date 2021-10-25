@@ -123,24 +123,22 @@ AreaCalc <- function (inputForestMap=NULL,
   }
 
   #----------------------------- DATA PREPARATION -----------------------------#
-
   # splitting studysite object to list for parallel processing
   studysiteList = lapply(1:nrow(studysite), function(i){
     return(studysite[i, ])
   })
-
   if (ncores == 1){ # sequential mode
     areaStats = lapply(studysiteList, function(feature){
-        area_stats_seq(studysite = feature,
-                                          inputForestMap = inputForestMap,
-                                          latlon=latlon)
-      })
+      area_stats_seq(studysite = feature,
+                     inputForestMap = inputForestMap,
+                     latlon=latlon)
+    })
   } else { # parallel mode
     areaStats = mclapply(studysiteList, function(feature){
-        area_stats_seq(studysite = feature,
-                                          inputForestMap = inputForestMap,
-                                          latlon=latlon)
-      }, mc.cores = ncores)
+      area_stats_seq(studysite = feature,
+                     inputForestMap = inputForestMap,
+                     latlon=latlon)
+    }, mc.cores = ncores)
   }
   #-------------------------------- PREPARING OUTPUT --------------------------#
 
@@ -180,27 +178,23 @@ AreaCalc <- function (inputForestMap=NULL,
 #' \cr
 #' \emph{License:} GPL-3
 area_stats_seq <- function(studysite, inputForestMap, latlon){
-
   studysite2 = st_transform(studysite, crs(inputForestMap))
   # calculate bounding boxes for raster and shapefile
   ratio = coverratio(inputForestMap, studysite2)
-
   if(ratio > 10){ # threshold of 10 % of the area
     treecover = crop(inputForestMap, studysite2)
   } else{
     treecover = inputForestMap
   }
-
   # Binary raster is multiplied by its cell resolution when 'latlon'=FALSE
   # otherwise area is estimated by terra::area()
   if(latlon){
     # approximation of area in km2, see ?terra::area for details
-    rasterIn =  treecover*global(cellSize(treecover), "sum")
+    rasterIn =  treecover*cellSize(treecover)
   }else{
     # uses projected raster units as inputs
     rasterIn =  treecover*(xres(treecover)[1]*yres(treecover)[1])
   }
-
   #---------------------------- ZONAL STATISTICS --------------------------#
   stats <- exact_extract(rasterIn, studysite2, "sum")
   rm(rasterIn, treecover, studysite2, studysite, inputForestMap, ratio); gc()

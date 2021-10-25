@@ -72,7 +72,7 @@ prepTC <- function(inputForestMap,
     if(unique_vals[1,] != 0 | unique_vals[2,] != 1 | nrow(unique_vals) != 2){
       stop("Cannot apply clump removal to raster: Other values than 0 and 1 are supplied!")
     }
-    clummy = patches(inputForestMap, directions = 8)
+    clummy = patches(rasters$treecover, directions = 8, zeroAsNA=TRUE)
     clumpTmp = data.frame(freq(clummy))
     clumpTmp = clumpTmp[which(clumpTmp$count < thresholdClump), ]
     clumpTmp = as.vector(clumpTmp$value)

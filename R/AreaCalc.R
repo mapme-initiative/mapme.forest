@@ -145,7 +145,7 @@ AreaCalc <- function (inputForestMap=NULL,
   #-------------------------------- PREPARING OUTPUT --------------------------#
 
   # prepare result data
-  areaStats =  as.data.frame(do.call("rbind", areaStats))
+  areaStats =  terra::as.data.frame(do.call("rbind", areaStats))
   colnames(areaStats) = paste0("area_",years)
   areaStats[,polyName] = st_drop_geometry(studysite)[ ,polyName]
   # Save the results if specified by user

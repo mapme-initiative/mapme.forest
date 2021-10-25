@@ -144,21 +144,24 @@ downloadfGFW <- function(shape,
     # read co2 spatial index
     co2tiles =
       tryCatch(read.csv("https://opendata.arcgis.com/datasets/d33587b6aee248faa2f388aaac96f92c_0.csv",as.is = TRUE),
-               error = function(e) NA, warning = function(w) print('The URL to the CO2 Emissions layer is broke. CO2 Layers are not available. Setting CO2 values to 0'))
+               error = function(e) NA, warning = function(w) print('The URL to the CO2 Emissions layer Index is broke. Setting CO2 values to 0'))
 
+    # if index data is available create list of tiles for download
     if(!is.na(co2tiles)){
       tiles = as.character(co2tiles$tile_id)
       target = paste0(max_y, "_", min_x)
       check = target %in% tiles
-    } else {
+    }
+    # else set the check param to FALSE
+    else {
       check = FALSE
     }
-
+    # If check param is not FALSE, create filenames
     if (!check){
-      #message(paste0("There is no CO2 dataset available for the extent you queried.\n",
-      #               "The function will add an empty raster instead.\n"))
       filenames = c(filenames, paste0("Zarin-2016_co2_emission_", max_y, "_", min_x, ".tif"))
-    } else {
+    } else
+
+      {
       urls_co2 = paste0("http://gfw2-data.s3.amazonaws.com/climate/Hansen_emissions/2018_loss/per_pixel/", max_y, "_" , min_x, "_tCO2_pixel_AGB_masked_by_loss.tif")
       # bind together target urls
       urls = c(urls, urls_co2)
@@ -166,14 +169,17 @@ downloadfGFW <- function(shape,
     }
 
     if(check){  # in cases where co2 data is available
-
+      # check if the data was already downloaded
       for (i in 1:length(filenames)){
         localname = file.path(.tmpdir, filenames[i])
         if(file.exists(localname)){
           print(paste0("File ", localname, " already exists. Skipping download."))
           next
-        } else {
-          download.file(urls[i], localname)
+        } else
+          # if data was not downloaded, try downloading it
+          {
+            tryCatch(download.file(urls[i], localname),
+                     error = function(e) NA, warning = function(w) print('The URLs of the CO2 Layers are not available. Skipping CO2 Downloads'))
         }
       }
 
@@ -185,7 +191,8 @@ downloadfGFW <- function(shape,
           print(paste0("File ", localname, " already exists. Skipping download."))
           next
         } else {
-          download.file(urls[i], localname)
+          tryCatch(download.file(urls[i], localname),
+                   error = function(e) NA, warning = function(w) print('The URLs of the CO2 Layers are not available. Skipping CO2 Downloads'))
         }
       }
 

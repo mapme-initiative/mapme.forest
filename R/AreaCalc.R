@@ -1,9 +1,9 @@
 #' Area of forest change
 #'
-#' Calculates the changes in forest area based on a \code{rasterObject} forest
+#' Calculates the changes in forest area based on a \code{SpatRaster} forest
 #'   mask and a \code{SpatialPolygonsDataFrame} containing areas of interest.
 #'
-#' @param inputForestMap A \code{RasterLayer} object with forest cover represented
+#' @param inputForestMap A \code{SpatRaster} object with forest cover represented
 #'  in binary (e.g 0 represents no forest; 1 represents forest). Each layer is
 #'  expected to represent one year in the \code{years} object in a consecutive order.
 #' @param studysite An object of type \code{sf} with a given
@@ -14,7 +14,7 @@
 #' @param latlon \code{logical}: Indicates whether or not the
 #'   \code{inputForestMap} object is based on a geographic coordinate system
 #'   or is projected to a planar coordinate system. In the former case,
-#'   area is approximated by \code{\link[raster:area]{raster::area}}.
+#'   area is approximated by \code{\link[terra:area]{terra::area}}.
 #' @param polyName \code{charachter} of length 1. Indicates the column in the
 #'   data frame of the \code{studysite} object to uniquely identify the features
 #'   of interest. The function will fail if there is no unique identification of
@@ -37,14 +37,14 @@
 #' \cr
 #' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr
-#' \emph{Contact Person:} Dr. Johannes Schielein
+#' \emph{Contact:} \email{contact@mapme-initiative.org}
 #' \cr
 #' \emph{Copyright:} MAPME-Initiative
 #' \cr
 #' \emph{License:} GPL-3
 #'
 #' @export AreaCalc
-#' @import raster
+#' @import terra
 #' @import sf
 #' @importFrom tibble rownames_to_column
 #' @importFrom dplyr left_join
@@ -53,11 +53,11 @@
 #'
 #' @examples
 #' library(sf)
-#' library(raster)
+#' library(terra)
 #' library(mapme.forest)
 #'
 #' aoi = st_read(system.file("extdata", "aoi_polys.gpkg", package = "mapme.forest"))
-#' yearlyRaster = stack(system.file("extdata", "pkgTest_yearlyCover.tif",
+#' yearlyRaster = rast(system.file("extdata", "pkgTest_yearlyCover.tif",
 #'                                  package = "mapme.forest"))
 #' result = AreaCalc(inputForestMap = yearlyRaster,
 #'                   studysite = aoi[1,],
@@ -80,15 +80,15 @@ AreaCalc <- function (inputForestMap=NULL,
   #--------------------------- CHECK FOR ERROS IN INPUT -----------------------#
 
 
-  if (!class(inputForestMap)[1] %in% c("RasterLayer", "RasterStack", "RasterBrick")){
+  if (!class(inputForestMap)[1] %in% c("RasterLayer", "RasterStack", "RasterBrick","SpatRaster")){
     stop(paste0("No valid raster object specified in 'inputForestMap'.\n","Must be of class 'RasterLayer','RasterStack'or 'RasterBrick').\n","See ?AreaCalc for details."))
   }
 
-  if (nlayers(inputForestMap) == 0){
+  if (nlyr(inputForestMap) == 0){
     stop(paste0("A raster object with 0 layers was specified.\n","At least one layer with a forest mask needs to be present.\n","See ?AreaCalc for details."))
   }
 
-  if(nlayers(inputForestMap) != length(years)){
+  if(nlyr(inputForestMap) != length(years)){
     stop(paste0("Number of layers in inputForestMap and length of years differ. \n","Make sure that for each year you specify a layer is present in inputForestMap."))
   }
 
@@ -161,27 +161,27 @@ AreaCalc <- function (inputForestMap=NULL,
 #' Forest area calculation single mode (Helper Function)
 #'
 #' @param studysite An sf object
-#' @param inputForestMap A raster object
+#' @param inputForestMap A SpatRaster object
 #' @param latlon Logical indicating if raster is unprojected or not
 #'
 #' @return A dataframe with estimated areas
 #' @export area_stats_seq
 #' @keywords internal
 #' @importFrom sf st_transform st_as_sfc st_bbox st_difference st_area
-#' @importFrom raster projection crop area xres yres
+#' @importFrom rast crs crop area xres yres
 #' @importFrom exactextractr exact_extract
-#' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+#' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net} Johannes Schielein
 #' \cr
 #' \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 #' \cr
-#' \emph{Contact Person:} Dr. Johannes Schielein
+#' \emph{Contact Person:} \email{contact@mapme-initiative.org}
 #' \cr
 #' \emph{Copyright:} MAPME-Initiative
 #' \cr
 #' \emph{License:} GPL-3
 area_stats_seq <- function(studysite, inputForestMap, latlon){
 
-  studysite2 = st_transform(studysite, projection(inputForestMap))
+  studysite2 = st_transform(studysite, crs(inputForestMap))
   # calculate bounding boxes for raster and shapefile
   ratio = coverratio(inputForestMap, studysite2)
 
@@ -192,9 +192,9 @@ area_stats_seq <- function(studysite, inputForestMap, latlon){
   }
 
   # Binary raster is multiplied by its cell resolution when 'latlon'=FALSE
-  # otherwise area is estimated by raster::area()
+  # otherwise area is estimated by terra::area()
   if(latlon){
-    # approximation of area in km2, see ?raster::area for details
+    # approximation of area in km2, see ?terra::area for details
     rasterIn =  treecover*area(treecover)
   }else{
     # uses projected raster units as inputs

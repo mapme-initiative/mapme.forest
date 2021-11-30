@@ -49,7 +49,7 @@
 <meta property="og:title" content="Area of forest change — AreaCalc" />
 <meta property="og:description" content="Calculates the changes in forest area based on a rasterObject forest
   mask and a SpatialPolygonsDataFrame containing areas of interest." />
-<meta property="og:image" content="/logo.png" />
+<meta property="og:image" content="https://mapme-initiative.github.io/mapme.forest/logo.png" />
 
 
 
@@ -117,14 +117,12 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="https://github.com/mapme-initiative/mapme.forest">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
-</li>
+        
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -229,56 +227,60 @@ are represented by pixels. For GFW data and the default these are 2001 to 2018.<
 <em>License:</em> GPL-3</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-spatial.github.io/sf/'>sf</a></span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Linking to GEOS 3.8.0, GDAL 3.0.4, PROJ 6.3.1</span></div><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://rspatial.org/raster'>raster</a></span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Loading required package: sp</span></div><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>mapme.forest</span><span class='op'>)</span>
-
-<span class='va'>aoi</span> <span class='op'>=</span> <span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_read.html'>st_read</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"extdata"</span>, <span class='st'>"aoi_polys.gpkg"</span>, package <span class='op'>=</span> <span class='st'>"mapme.forest"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Reading layer `aoi_polys' from data source 
-#&gt;   `/home/runner/work/_temp/Library/mapme.forest/extdata/aoi_polys.gpkg' 
-#&gt;   using driver `GPKG'
-#&gt; Simple feature collection with 8 features and 1 field
-#&gt; Geometry type: POLYGON
-#&gt; Dimension:     XY
-#&gt; Bounding box:  xmin: 107.1291 ymin: 16.59741 xmax: 107.2502 ymax: 16.6916
-#&gt; Geodetic CRS:  WGS 84</div><div class='input'><span class='va'>yearlyRaster</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/raster/man/stack.html'>stack</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"extdata"</span>, <span class='st'>"pkgTest_yearlyCover.tif"</span>,
-                                 package <span class='op'>=</span> <span class='st'>"mapme.forest"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>result</span> <span class='op'>=</span> <span class='fu'>AreaCalc</span><span class='op'>(</span>inputForestMap <span class='op'>=</span> <span class='va'>yearlyRaster</span>,
-                  studysite <span class='op'>=</span> <span class='va'>aoi</span><span class='op'>[</span><span class='fl'>1</span>,<span class='op'>]</span>,
-                  latlon <span class='op'>=</span> <span class='cn'>TRUE</span>,
-                  polyName <span class='op'>=</span> <span class='st'>"id"</span>,
-                  ncores <span class='op'>=</span> <span class='fl'>1</span>,
-                  saveCSV <span class='op'>=</span> <span class='cn'>FALSE</span>,
-                  years <span class='op'>=</span> <span class='fl'>2000</span><span class='op'>:</span><span class='fl'>2018</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>result</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Classes ‘sf’ and 'data.frame':	1 obs. of  21 variables:
-#&gt;  $ id       : int 1
-#&gt;  $ area_2000: num 0.722
-#&gt;  $ area_2001: num 0.722
-#&gt;  $ area_2002: num 0.722
-#&gt;  $ area_2003: num 0.722
-#&gt;  $ area_2004: num 0.721
-#&gt;  $ area_2005: num 0.491
-#&gt;  $ area_2006: num 0.135
-#&gt;  $ area_2007: num 0.135
-#&gt;  $ area_2008: num 0.129
-#&gt;  $ area_2009: num 0.128
-#&gt;  $ area_2010: num 0.128
-#&gt;  $ area_2011: num 0.128
-#&gt;  $ area_2012: num 0.0685
-#&gt;  $ area_2013: num 0.0371
-#&gt;  $ area_2014: num 0.0275
-#&gt;  $ area_2015: num 0.0264
-#&gt;  $ area_2016: num 0.0257
-#&gt;  $ area_2017: num 0.0257
-#&gt;  $ area_2018: num 0.0257
-#&gt;  $ geom     :sfc_POLYGON of length 1; first list element: List of 1
-#&gt;   ..$ : num [1:5, 1:2] 107 107 107 107 107 ...
-#&gt;   ..- attr(*, "class")= chr [1:3] "XY" "POLYGON" "sfg"
-#&gt;  - attr(*, "sf_column")= chr "geom"
-#&gt;  - attr(*, "agr")= Factor w/ 3 levels "constant","aggregate",..: NA NA NA NA NA NA NA NA NA NA ...
-#&gt;   ..- attr(*, "names")= chr [1:20] "id" "area_2000" "area_2001" "area_2002" ...</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-spatial.github.io/sf/'>sf</a></span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Linking to GEOS 3.8.0, GDAL 3.0.4, PROJ 6.3.1</span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://rspatial.org/raster'>raster</a></span><span class='op'>)</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: sp</span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://mapme-initiative.github.io/mapme.forest'>mapme.forest</a></span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>aoi</span> <span class='op'>=</span> <span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_read.html'>st_read</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"extdata"</span>, <span class='st'>"aoi_polys.gpkg"</span>, package <span class='op'>=</span> <span class='st'>"mapme.forest"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Reading layer `aoi_polys' from data source </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   `/home/runner/work/_temp/Library/mapme.forest/extdata/aoi_polys.gpkg' </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   using driver `GPKG'</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Simple feature collection with 8 features and 1 field</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Geometry type: POLYGON</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Dimension:     XY</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Bounding box:  xmin: 107.1291 ymin: 16.59741 xmax: 107.2502 ymax: 16.6916</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Geodetic CRS:  WGS 84</span>
+<span class='r-in'><span class='va'>yearlyRaster</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/raster/man/stack.html'>stack</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"extdata"</span>, <span class='st'>"pkgTest_yearlyCover.tif"</span>,</span>
+<span class='r-in'>                                 package <span class='op'>=</span> <span class='st'>"mapme.forest"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>result</span> <span class='op'>=</span> <span class='fu'>AreaCalc</span><span class='op'>(</span>inputForestMap <span class='op'>=</span> <span class='va'>yearlyRaster</span>,</span>
+<span class='r-in'>                  studysite <span class='op'>=</span> <span class='va'>aoi</span><span class='op'>[</span><span class='fl'>1</span>,<span class='op'>]</span>,</span>
+<span class='r-in'>                  latlon <span class='op'>=</span> <span class='cn'>TRUE</span>,</span>
+<span class='r-in'>                  polyName <span class='op'>=</span> <span class='st'>"id"</span>,</span>
+<span class='r-in'>                  ncores <span class='op'>=</span> <span class='fl'>1</span>,</span>
+<span class='r-in'>                  saveCSV <span class='op'>=</span> <span class='cn'>FALSE</span>,</span>
+<span class='r-in'>                  years <span class='op'>=</span> <span class='fl'>2000</span><span class='op'>:</span><span class='fl'>2018</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/utils/str.html'>str</a></span><span class='op'>(</span><span class='va'>result</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Classes ‘sf’ and 'data.frame':	1 obs. of  21 variables:</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ id       : int 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ area_2000: num 0.722</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ area_2001: num 0.722</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ area_2002: num 0.722</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ area_2003: num 0.722</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ area_2004: num 0.721</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ area_2005: num 0.491</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ area_2006: num 0.135</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ area_2007: num 0.135</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ area_2008: num 0.129</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ area_2009: num 0.128</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ area_2010: num 0.128</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ area_2011: num 0.128</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ area_2012: num 0.0685</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ area_2013: num 0.0371</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ area_2014: num 0.0275</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ area_2015: num 0.0264</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ area_2016: num 0.0257</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ area_2017: num 0.0257</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ area_2018: num 0.0257</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  $ geom     :sfc_POLYGON of length 1; first list element: List of 1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   ..$ : num [1:5, 1:2] 107 107 107 107 107 ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   ..- attr(*, "class")= chr [1:3] "XY" "POLYGON" "sfg"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  - attr(*, "sf_column")= chr "geom"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  - attr(*, "agr")= Factor w/ 3 levels "constant","aggregate",..: NA NA NA NA NA NA NA NA NA NA ...</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   ..- attr(*, "names")= chr [1:20] "id" "area_2000" "area_2001" "area_2002" ...</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -290,7 +292,7 @@ are represented by pixels. For GFW data and the default these are 2001 to 2018.<
 
       <footer>
       <div class="copyright">
-  <p>Developed by MAPME-Intitiative, <a href='http://dariusgoergen.com/'>Darius Görgen</a>.</p>
+  <p>Developed by MAPME-Intitiative, Darius Görgen.</p>
 </div>
 
 <div class="pkgdown">

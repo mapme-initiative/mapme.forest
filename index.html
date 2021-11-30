@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>An R package for deforestation analysis • mapme.forest</title>
+<title>Package to Support Project Evaluation and Planning in the Forest Sector • mapme.forest</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
@@ -17,9 +17,17 @@
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="An R package for deforestation analysis">
-<meta property="og:description" content="This package helps you to analyses deforestation dynamics around the globe using Global Forest Watch (GFW) data">
-<meta property="og:image" content="/logo.png">
+<script src="pkgdown.js"></script><meta property="og:title" content="Package to Support Project Evaluation and Planning in the Forest Sector">
+<meta property="og:description" content="This collection of R functions can be used to support projects
+  of international development cooperation in planning and evaluating 
+  projects in the forest sector. It helps to understand dynamics of 
+  deforestation globally by using Global Forest Watch data sets and 
+  user specified areas of interest. The packages provides a common 
+  interface to derive reproducible statistics on deforestation and
+  fragmentation indicators with a convenient user interface. The 
+  development of the package was financed by the KFW Development Bank 
+  and realised by MapTailor Geospatial Consulting GbR.">
+<meta property="og:image" content="https://mapme-initiative.github.io/mapme.forest/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -74,15 +82,11 @@
     </li>
   </ul>
 </li>
-      </ul>
-<ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/mapme-initiative/mapme.forest">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
+  <a href="news/index.html">Changelog</a>
 </li>
       </ul>
+<ul class="nav navbar-nav navbar-right"></ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -114,7 +118,7 @@
 <h2 class="hasAnchor">
 <a href="#installation-instructions-under-linux" class="anchor"></a>Installation instructions under Linux</h2>
 <p>The mapme.forest package can then be installed by using the <code>remotes</code> package by entering the following command:</p>
-<p><code><a href="https://remotes.r-lib.org/reference/install_github.html">remotes::install_github("mapme-initiative/mapme.forest")</a></code>.</p>
+<p><code>remotes::install_github("mapme-initiative/mapme.forest")</code>.</p>
 <p>Additionally, we ship this package with a Dockerfile which can be used to run the packages and its dependencies as a container. When <code>cd</code>ing into the repository, building and running the image is as simple as:</p>
 <p><code>docker build -t mapmeForest:latest .</code></p>
 <p><code>docker run -d -p 8787:8787 -e USER=myuser -e PASSWORD=mypassword gans-deforestation</code></p>
@@ -130,7 +134,7 @@
 </li>
 <li>download and install Rtools from <a href="https://cran.r-project.org/bin/windows/Rtools" class="uri">https://cran.r-project.org/bin/windows/Rtools</a> and make Rtools available on the PATH variable</li>
 <li>install the remotes packages with ‘install.packages(“remotes”)’</li>
-<li>install mapme.forest with the following command: <code><a href="https://remotes.r-lib.org/reference/install_github.html">remotes::install_github("mapme-initiative/mapme.forest")</a></code> and close R Studio afterwards</li>
+<li>install mapme.forest with the following command: <code>remotes::install_github("mapme-initiative/mapme.forest")</code> and close R Studio afterwards</li>
 </ul>
 <p>Now the package has been sucessfully installed, however, you are not necessarily 100% ready to use it. Since some of the function use gdal system calls we additionally need a valid gdal installation on your machine.</p>
 <ul>
@@ -174,20 +178,7 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <div class="links">
-<h2>Links</h2>
-<ul class="list-unstyled">
-<li>Learn more about MAPME at <br><a href="https://mapme-initiative.org/">https://​mapme-initiative.org/​</a>
-</li>
-<li>Read the Open Source Guide at <br><a href="https://github.com/mapme-initiative/mapme.osg">https://​github.com/​mapme-initiative/​mapme.osg</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/mapme-initiative/mapme.forest">https://​github.com/​mapme-initiative/​mapme.forest</a>
-</li>
-<li>File an issue at <br><a href="https://github.com/mapme-initiative/mapme.forest/issues">https://​github.com/​mapme-initiative/​mapme.forest/​issues</a>
-</li>
-</ul>
-</div>
-<div class="license">
+    <div class="license">
 <h2>License</h2>
 <ul class="list-unstyled">
 <li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
@@ -197,8 +188,7 @@
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>MAPME-Intitiative <br><small class="roles"> Maintainer, copyright holder </small>  </li>
-<li>
-<a href="http://dariusgoergen.com/">Darius Görgen</a> <br><small class="roles"> Author </small>  </li>
+<li>Darius Görgen <br><small class="roles"> Author </small>  </li>
 </ul>
 </div>
 
@@ -213,7 +203,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by MAPME-Intitiative, <a href="http://dariusgoergen.com/">Darius Görgen</a>.</p>
+  <p>Developed by MAPME-Intitiative, Darius Görgen.</p>
 </div>
 
 <div class="pkgdown">

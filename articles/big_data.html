@@ -19,7 +19,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="04 Big Data Analysis">
 <meta property="og:description" content="mapme.forest">
-<meta property="og:image" content="/logo.png">
+<meta property="og:image" content="https://mapme-initiative.github.io/mapme.forest/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -74,15 +74,11 @@
     </li>
   </ul>
 </li>
-      </ul>
-<ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/mapme-initiative/mapme.forest">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
+<ul class="nav navbar-nav navbar-right"></ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -98,7 +94,7 @@
       <h1 data-toc-skip>04 Big Data Analysis</h1>
                         <h4 class="author">Darius Görgen</h4>
             
-            <h4 class="date">2021-10-21</h4>
+            <h4 class="date">2021-11-30</h4>
       
       
       <div class="hidden name"><code>big_data.Rmd</code></div>
@@ -109,7 +105,7 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">mapme.forest</span><span class="op">)</span></code></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://mapme-initiative.github.io/mapme.forest">mapme.forest</a></span><span class="op">)</span></code></pre></div>
 <p>The previously demonstrated R routines base on the <code>raster</code> package which uses quite a lot of RAM and this can be inefficient when it comes to the analysis of very large rasters. In order to make the analysis of extensive regions feasible we developed a routine using <a href="https://grass.osgeo.org/">GRASS GIS</a> for the complete processing chain from pre-processing GFW data to the extraction of zonal statistics. This routine is very RAM efficient rendering the analysis of large areas possible even when only restricted hardware is available (8GB of RAM should be enough for most use cases).</p>
 <p>Equally to most of the other functions, it is expected that the path to the GDAL binaries is exposed in your environment variable (refer to the README of this package for more information). Additionally, the path to a working installation of GRASS GIS version &gt;=7.0.0 is required for the function to work properly. Internally, the function uses the <a href="https://grass.osgeo.org/grass78/manuals/addons/r.area.html"><code>r.area</code></a> addon, which will be installed automatically if it is not present in the specified addon path option.</p>
 <p>As inputs to the function it is required to specify the path to the tree cover, loss year and CO2 emission files which cover the area of the polygons you are interested in. We advise you to use the files you obtained by calling <code>downloadGFW()</code> with your area of interest, however, also raster files obtained in another way are suitable for the routine.</p>
@@ -148,7 +144,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by MAPME-Intitiative, <a href="http://dariusgoergen.com/">Darius Görgen</a>.</p>
+  <p>Developed by MAPME-Intitiative, Darius Görgen.</p>
 </div>
 
 <div class="pkgdown">

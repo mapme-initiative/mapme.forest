@@ -57,3 +57,4 @@ SystemRequirements:
     GRASS (>= 7.0.0)
 VignetteBuilder: knitr
 Remotes: github::jjvanderwal/SDMTools
+URL: https://mapme-initiative.github.io/mapme.forest

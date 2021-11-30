@@ -157,7 +157,8 @@
   <span class='va'>years</span>,
   outdir <span class='op'>=</span> <span class='cn'>NULL</span>,
   <span class='va'>saveRaster</span>,
-  hideoutput <span class='op'>=</span> <span class='cn'>FALSE</span>
+  hideoutput <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  .tmpdir <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></span><span class='op'>(</span><span class='op'>)</span>
 <span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -229,6 +230,13 @@ will be written to. If files with the same name as specified by the values in
     <tr>
       <th>hideoutput</th>
       <td><p>Logical indicating if grass output should not be printed in console.</p></td>
+    </tr>
+    <tr>
+      <th>.tmpdir</th>
+      <td><p>A character string pointing to a directory where intermediate
+GRASS files will be written to. Defaults to the output of <code><a href='https://rdrr.io/r/base/tempfile.html'>tempdir()</a></code>.
+Note, that you should have write access to the directory, otherwise the
+the function will fail.</p></td>
     </tr>
     </table>
 

@@ -4,6 +4,8 @@ on:
   push:
     branches: [main, master]
     tags: ['*']
+  schedule:
+    - cron: "0 23 * * 0"
 
 name: pkgdown
 
@@ -21,21 +23,11 @@ jobs:
         with:
           use-public-rspm: true
 
-      - name: "[Stage] [Linux] Install curl"
-        run: sudo apt install libcurl4-openssl-dev libgit2-dev
-
-      - name: "[Custom] [Stage] [Linux] Install pkgdown system lib req"
-        run: sudo apt install libharfbuzz-dev libfribidi-dev
-
-      - name: "[Custom block] Install spatial libraries"
-        if: runner.os == 'Linux'
-        run: sudo apt install libgdal-dev libproj-dev libgeos-dev libudunits2-dev
-        
       - uses: r-lib/actions/setup-r-dependencies@v1
         with:
           extra-packages: pkgdown
           needs: website
-        
+
       - name: Deploy package
         run: |
           git config --local user.name "$GITHUB_ACTOR"

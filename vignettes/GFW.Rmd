@@ -1,10 +1,10 @@
 ---
-title: "01 Download & Preprocessing"
+title: "Download & Preprocessing"
 author: "Darius Görgen"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{01 Download & Preprocessing}
+  %\VignetteIndexEntry{Download & Preprocessing}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
     %\VignetteDepends{ggplot2, stringr}

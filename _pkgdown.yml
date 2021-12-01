@@ -1,2 +1,52 @@
+template:
+  bootstrap: 5
+  bootswatch: flatly
+  bslib:
+    fg: "#004658"
+    bg: "#ffffff"
+    primary: "#004658"
+    link-color: "#008c8d"
+    link-hover-color: "#de9433"
+
+home:
+  title: An R package for processing GlobalForestWatch (GFW) datasets for deforestation monitoring
+  description: This package let's you download and analyse data from GFW e.g. deforestation statistics and fragmentation indices
+  links:
+  - text: Learn more about MAPME
+    href: https://mapme-initiative.org/
+  - text: Read the Open Source Guide
+    href: https://github.com/mapme-initiative/mapme.osg
+  - text: Browse source code
+    href: https://github.com/mapme-initiative/mapme.forest
+  - text: File an issue
+    href: https://github.com/mapme-initiative/mapme.forest/issues
+  - text: Learn more about developers
+    href: https://maptailor.net/
+destination: docs
+
+navbar:
+  components:
+   home: ~
+   articles:
+      text: Articles
+      menu:
+        - text: Download & Preprocessing
+          href: articles/GFW.html
+        - text: Area Statistics
+          href: articles/area_stats.html
+        - text: Big Data Analytics
+          href: articles/big_data.html
+        - text: Fragmentation Statistics
+          href: articles/frag_stats.html
+  github:
+    icon: fab fa-github fa-lg
+    href: https://github.com/mapme-initiative/mapme.forest
+
+authors:
+  Darius Görgen:
+    href: http://dariusgoergen.com/
+  MAPME-Initiative:
+    href: https://mapme-initiative.org/
+
 url: https://mapme-initiative.github.io/mapme.forest
 

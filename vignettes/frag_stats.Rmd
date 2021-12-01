@@ -1,10 +1,10 @@
 ---
-title: "03 Fragmentation Statistics"
+title: "Fragmentation Statistics"
 author: "Darius Görgen"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
- %\VignetteIndexEntry{03 Fragmentation Statistics}
+ %\VignetteIndexEntry{Fragmentation Statistics}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
     %\VignetteDepends{ggplot2, plotly, stars, tmap, stringr}

@@ -1,9 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # mapme.forest <img src="man/figures/logo.png" align="right" height="110"/>
 
 <!-- badges: start -->

@@ -76,9 +76,9 @@ downloadGFW <- function(shape,
                         keepTmpFiles = F,
                         .tmpdir = tempfile(tmpdir = tempdir())){
 
-  warning("IMPORTANT WARNING: The use of the CO2 emission layer during analysis is currently discouraged. /n
-           Several routines need to be adapted since the usage of a new data set by Harris et al (2021) (see https://www.nature.com/articles/s41558-020-00976-6)\n
-           Check out https://github.com/mapme-initiative/mapme.forest/issues/7 to recieve information if the issue has been solved.")
+  warning("IMPORTANT WARNING: The use of the CO2 emission layer during analysis is currently discouraged.
+           Several routines need to be adapted since the usage of a new data set by Harris et al (2021) (see https://www.nature.com/articles/s41558-020-00976-6)
+           Check out https://github.com/mapme-initiative/mapme.forest/issues/7 to recieve information if the issue has been solved.", immediate. = TRUE)
 
 
   out = has_internet()

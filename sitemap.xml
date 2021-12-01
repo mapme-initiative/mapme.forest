@@ -1,7 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://mapme-initiative.github.io/mapme.forest/404.html</loc>
+  </url>
+  <url>
+    <loc>https://mapme-initiative.github.io/mapme.forest/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://mapme-initiative.github.io/mapme.forest/articles/GFW.html</loc>
+  </url>
+  <url>
+    <loc>https://mapme-initiative.github.io/mapme.forest/articles/area_stats.html</loc>
+  </url>
+  <url>
+    <loc>https://mapme-initiative.github.io/mapme.forest/articles/big_data.html</loc>
+  </url>
+  <url>
+    <loc>https://mapme-initiative.github.io/mapme.forest/articles/frag_stats.html</loc>
+  </url>
+  <url>
+    <loc>https://mapme-initiative.github.io/mapme.forest/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://mapme-initiative.github.io/mapme.forest/authors.html</loc>
+  </url>
+  <url>
     <loc>https://mapme-initiative.github.io/mapme.forest/index.html</loc>
+  </url>
+  <url>
+    <loc>https://mapme-initiative.github.io/mapme.forest/news/index.html</loc>
   </url>
   <url>
     <loc>https://mapme-initiative.github.io/mapme.forest/reference/AreaCalc.html</loc>
@@ -37,7 +64,7 @@
     <loc>https://mapme-initiative.github.io/mapme.forest/reference/createGrid.html</loc>
   </url>
   <url>
-    <loc>https://mapme-initiative.github.io/mapme.forest/reference/downloadfGFW.html</loc>
+    <loc>https://mapme-initiative.github.io/mapme.forest/reference/downloadGFW.html</loc>
   </url>
   <url>
     <loc>https://mapme-initiative.github.io/mapme.forest/reference/funTrendsDir.html</loc>
@@ -47,6 +74,9 @@
   </url>
   <url>
     <loc>https://mapme-initiative.github.io/mapme.forest/reference/getTM.html</loc>
+  </url>
+  <url>
+    <loc>https://mapme-initiative.github.io/mapme.forest/reference/index.html</loc>
   </url>
   <url>
     <loc>https://mapme-initiative.github.io/mapme.forest/reference/loss_calc_seq.html</loc>
@@ -62,17 +92,5 @@
   </url>
   <url>
     <loc>https://mapme-initiative.github.io/mapme.forest/reference/statsGRASS.html</loc>
-  </url>
-  <url>
-    <loc>https://mapme-initiative.github.io/mapme.forest/articles/GFW.html</loc>
-  </url>
-  <url>
-    <loc>https://mapme-initiative.github.io/mapme.forest/articles/area_stats.html</loc>
-  </url>
-  <url>
-    <loc>https://mapme-initiative.github.io/mapme.forest/articles/big_data.html</loc>
-  </url>
-  <url>
-    <loc>https://mapme-initiative.github.io/mapme.forest/articles/frag_stats.html</loc>
   </url>
 </urlset>

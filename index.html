@@ -34,6 +34,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -46,18 +48,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">mapme.forest</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
@@ -98,55 +94,62 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="mapmeforest-" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#mapmeforest-" class="anchor"></a>mapme.forest <img src="reference/figures/logo.png" align="right" height="110">
+<div class="section level1">
+<div class="page-header"><h1 id="mapmeforest-">mapme.forest <img src="reference/figures/logo.png" align="right" height="110"><a class="anchor" aria-label="anchor" href="#mapmeforest-"></a>
 </h1></div>
 <!-- badges: start -->
 
-<div id="about" class="section level2">
-<h2 class="hasAnchor">
-<a href="#about" class="anchor"></a>About</h2>
+<!-- badges: end -->
+<div class="section level2">
+<h2 id="important-warning">IMPORTANT WARNING<a class="anchor" aria-label="anchor" href="#important-warning"></a>
+</h2>
+<p><strong>The use of the CO2 emission layer during analysis is currently discouraged. Several routines need to be adapted since the usage of a new data set by Harris et al (2021) (see <a href="https://www.nature.com/articles/s41558-020-00976-6" class="external-link uri">https://www.nature.com/articles/s41558-020-00976-6</a>). Check out <a href="https://github.com/mapme-initiative/mapme.forest/issues/7" class="external-link uri">https://github.com/mapme-initiative/mapme.forest/issues/7</a> to receive information if and when the issue has been solved.</strong></p>
+</div>
+<div class="section level2">
+<h2 id="about">About<a class="anchor" aria-label="anchor" href="#about"></a>
+</h2>
 <p>The mapme.forest package helps understanding recent and past deforestation dynamics around the world. Next to calculating areal statistics about the amount of deforestation in a given space, the tool provides you with the ability to calculate a high number of common fragmentation statistics of a given landscape.</p>
 </div>
-<div id="tutorial" class="section level2">
-<h2 class="hasAnchor">
-<a href="#tutorial" class="anchor"></a>Tutorial</h2>
+<div class="section level2">
+<h2 id="tutorial">Tutorial<a class="anchor" aria-label="anchor" href="#tutorial"></a>
+</h2>
 <p>The tutorial for the usage of the <strong>mapme.forest package</strong> can be found <a href="https://mapme-initiative.github.io/mapme.forest/">here</a>. Please visit this page in order to get to know the API of mapme.forest.</p>
 </div>
-<div id="installation-instructions-under-linux" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation-instructions-under-linux" class="anchor"></a>Installation instructions under Linux</h2>
+<div class="section level2">
+<h2 id="installation-instructions-under-linux">Installation instructions under Linux<a class="anchor" aria-label="anchor" href="#installation-instructions-under-linux"></a>
+</h2>
 <p>The mapme.forest package can then be installed by using the <code>remotes</code> package by entering the following command:</p>
 <p><code>remotes::install_github("mapme-initiative/mapme.forest")</code>.</p>
 <p>Additionally, we ship this package with a Dockerfile which can be used to run the packages and its dependencies as a container. When <code>cd</code>ing into the repository, building and running the image is as simple as:</p>
 <p><code>docker build -t mapmeForest:latest .</code></p>
 <p><code>docker run -d -p 8787:8787 -e USER=myuser -e PASSWORD=mypassword gans-deforestation</code></p>
 </div>
-<div id="installation-instructions-under-windows" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation-instructions-under-windows" class="anchor"></a>Installation instructions under Windows</h2>
+<div class="section level2">
+<h2 id="installation-instructions-under-windows">Installation instructions under Windows<a class="anchor" aria-label="anchor" href="#installation-instructions-under-windows"></a>
+</h2>
 <p>In our installation instruction we assume that you are going to use R Studio as an IDE. You need to have some software pre-installed software to be able to install the forestIndicator package.</p>
 <ul>
-<li>download and install R &gt;= 3.5.x from <a href="https://cran.rstudio.com/" class="uri">https://cran.rstudio.com/</a>
+<li>download and install R &gt;= 3.5.x from <a href="https://cran.rstudio.com/" class="external-link uri">https://cran.rstudio.com/</a>
 </li>
-<li>download and install R Studio from <a href="https://rstudio.com/products/rstudio/download/#download" class="uri">https://rstudio.com/products/rstudio/download/#download</a>
+<li>download and install R Studio from <a href="https://rstudio.com/products/rstudio/download/#download" class="external-link uri">https://rstudio.com/products/rstudio/download/#download</a>
 </li>
-<li>download and install Rtools from <a href="https://cran.r-project.org/bin/windows/Rtools" class="uri">https://cran.r-project.org/bin/windows/Rtools</a> and make Rtools available on the PATH variable</li>
+<li>download and install Rtools from <a href="https://cran.r-project.org/bin/windows/Rtools" class="external-link uri">https://cran.r-project.org/bin/windows/Rtools</a> and make Rtools available on the PATH variable</li>
 <li>install the remotes packages with ‘install.packages(“remotes”)’</li>
 <li>install mapme.forest with the following command: <code>remotes::install_github("mapme-initiative/mapme.forest")</code> and close R Studio afterwards</li>
 </ul>
 <p>Now the package has been sucessfully installed, however, you are not necessarily 100% ready to use it. Since some of the function use gdal system calls we additionally need a valid gdal installation on your machine.</p>
 <ul>
-<li>go to <a href="https://trac.osgeo.org/osgeo4w/" class="uri">https://trac.osgeo.org/osgeo4w/</a> and download the osgeo4w.exe and run it</li>
-<li>chose advanced installation and follow the instructions. In the follwing we assume you choose the standard installation path. If you chose a custom installation path adjust the next inputs accordingly.</li>
-<li>When you are asked which software to install open up the Commandline_Utilities branch and chose the following:
+<li><p>go to <a href="https://trac.osgeo.org/osgeo4w/" class="external-link uri">https://trac.osgeo.org/osgeo4w/</a> and download the osgeo4w.exe and run it</p></li>
+<li><p>chose advanced installation and follow the instructions. In the follwing we assume you choose the standard installation path. If you chose a custom installation path adjust the next inputs accordingly.</p></li>
+<li>
+<p>When you are asked which software to install open up the Commandline_Utilities branch and chose the following:</p>
 <ul>
 <li>gdal</li>
 <li>all python3-* entries</li>
 </ul>
 </li>
-<li>At the Libs branch chose the following package:
+<li>
+<p>At the Libs branch chose the following package:</p>
 <ul>
 <li>libs python3-gdal</li>
 </ul>
@@ -154,15 +157,17 @@
 </ul>
 <p>Once the installation is completed you have to add some environment variables so that Windows know where to look for the programs.</p>
 <ul>
-<li>open: System Controls -&gt; System and Safety -&gt; System -&gt; Advanced Settings -&gt; Environment Variables -&gt; System Variables</li>
-<li>edit the PATH variable and add these three entries:
+<li><p>open: System Controls -&gt; System and Safety -&gt; System -&gt; Advanced Settings -&gt; Environment Variables -&gt; System Variables</p></li>
+<li>
+<p>edit the PATH variable and add these three entries:</p>
 <ul>
 <li>C:\OSGeo4W64\bin</li>
 <li>C:\OSGeo4W64\apps\Python37</li>
 <li>C:\OSGeo4W64\apps\Python37\Scripts</li>
 </ul>
 </li>
-<li>then add four new variables with the following scheme:
+<li>
+<p>then add four new variables with the following scheme:</p>
 <ul>
 <li>Name: GDAL_DATA Value: C:\OSGeo4W64\share\gdal</li>
 <li>Name: PROJ_LIB Value: C:\OSGeo4W64\share\proj</li>
@@ -170,8 +175,8 @@
 <li>PYTHONPATH Value: C:\OSGeo4W64\apps\Python37\python.exe</li>
 </ul>
 </li>
-<li>open up a command line and enter: gdal_calc.py When you are getting some information on how to use this script you are ready to go</li>
-<li>note that the setup outlined above might not be your preffered setup. Of course you can use different setups, e.g. by using virtual anaconda environments. However, this would be fairly advanced setups so we do not outline them here. The important take-away message four you when you are going to use a different setup is that gdal_calc.py as well as the usual gdal command line tools need to be available and executable.</li>
+<li><p>open up a command line and enter: gdal_calc.py When you are getting some information on how to use this script you are ready to go</p></li>
+<li><p>note that the setup outlined above might not be your preffered setup. Of course you can use different setups, e.g. by using virtual anaconda environments. However, this would be fairly advanced setups so we do not outline them here. The important take-away message four you when you are going to use a different setup is that gdal_calc.py as well as the usual gdal command line tools need to be available and executable.</p></li>
 </ul>
 </div>
 </div>
@@ -179,35 +184,47 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
+<li><a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a></li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing mapme.forest</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>MAPME-Intitiative <br><small class="roles"> Maintainer, copyright holder </small>  </li>
 <li>Darius Görgen <br><small class="roles"> Author </small>  </li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://codecov.io/github/mapme-initiative/mapme.forest?branch=master"><img src="https://img.shields.io/codecov/c/github/mapme-initiative/mapme.forest/master.svg" alt="Coverage Status"></a></li>
+<li><a href="https://codecov.io/github/mapme-initiative/mapme.forest?branch=master" class="external-link"><img src="https://img.shields.io/codecov/c/github/mapme-initiative/mapme.forest/master.svg" alt="Coverage Status"></a></li>
 </ul>
 </div>
-</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by MAPME-Intitiative, Darius Görgen.</p>
+  <p></p>
+<p>Developed by MAPME-Intitiative, Darius Görgen.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.0.</p>
 </div>
 
       </footer>
@@ -215,6 +232,8 @@
 
   
 
+
+  
 
   </body>
 </html>

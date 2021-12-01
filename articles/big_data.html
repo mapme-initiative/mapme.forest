@@ -26,6 +26,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -38,18 +40,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mapme.forest</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -92,9 +88,9 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>04 Big Data Analysis</h1>
-                        <h4 class="author">Darius Görgen</h4>
+                        <h4 data-toc-skip class="author">Darius Görgen</h4>
             
-            <h4 class="date">2021-11-30</h4>
+            <h4 data-toc-skip class="date">2021-12-01</h4>
       
       
       <div class="hidden name"><code>big_data.Rmd</code></div>
@@ -104,19 +100,19 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://mapme-initiative.github.io/mapme.forest">mapme.forest</a></span><span class="op">)</span></code></pre></div>
-<p>The previously demonstrated R routines base on the <code>raster</code> package which uses quite a lot of RAM and this can be inefficient when it comes to the analysis of very large rasters. In order to make the analysis of extensive regions feasible we developed a routine using <a href="https://grass.osgeo.org/">GRASS GIS</a> for the complete processing chain from pre-processing GFW data to the extraction of zonal statistics. This routine is very RAM efficient rendering the analysis of large areas possible even when only restricted hardware is available (8GB of RAM should be enough for most use cases).</p>
-<p>Equally to most of the other functions, it is expected that the path to the GDAL binaries is exposed in your environment variable (refer to the README of this package for more information). Additionally, the path to a working installation of GRASS GIS version &gt;=7.0.0 is required for the function to work properly. Internally, the function uses the <a href="https://grass.osgeo.org/grass78/manuals/addons/r.area.html"><code>r.area</code></a> addon, which will be installed automatically if it is not present in the specified addon path option.</p>
-<p>As inputs to the function it is required to specify the path to the tree cover, loss year and CO2 emission files which cover the area of the polygons you are interested in. We advise you to use the files you obtained by calling <code>downloadGFW()</code> with your area of interest, however, also raster files obtained in another way are suitable for the routine.</p>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mapme-initiative.github.io/mapme.forest">mapme.forest</a></span><span class="op">)</span></code></pre></div>
+<p>The previously demonstrated R routines base on the <code>raster</code> package which uses quite a lot of RAM and this can be inefficient when it comes to the analysis of very large rasters. In order to make the analysis of extensive regions feasible we developed a routine using <a href="https://grass.osgeo.org/" class="external-link">GRASS GIS</a> for the complete processing chain from pre-processing GFW data to the extraction of zonal statistics. This routine is very RAM efficient rendering the analysis of large areas possible even when only restricted hardware is available (8GB of RAM should be enough for most use cases).</p>
+<p>Equally to most of the other functions, it is expected that the path to the GDAL binaries is exposed in your environment variable (refer to the README of this package for more information). Additionally, the path to a working installation of GRASS GIS version &gt;=7.0.0 is required for the function to work properly. Internally, the function uses the <a href="https://grass.osgeo.org/grass78/manuals/addons/r.area.html" class="external-link"><code>r.area</code></a> addon, which will be installed automatically if it is not present in the specified addon path option.</p>
+<p>As inputs to the function it is required to specify the path to the tree cover, loss year and CO2 emission files which cover the area of the polygons you are interested in. We advise you to use the files you obtained by calling <code><a href="../reference/downloadGFW.html">downloadGFW()</a></code> with your area of interest, however, also raster files obtained in another way are suitable for the routine.</p>
 <p>The function call with the sample data from this package then looks like this:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># get the file paths to the raster files</span>
-<span class="va">treeCover</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"pkgTest_treecover2000.tif"</span>, package <span class="op">=</span> <span class="st">"mapme.forest"</span><span class="op">)</span>
-<span class="va">lossYear</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"pkgTest_lossyear.tif"</span>, package <span class="op">=</span> <span class="st">"mapme.forest"</span><span class="op">)</span>
-<span class="va">co2Layer</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"pkgTest_co2_emission.tif"</span>, package <span class="op">=</span> <span class="st">"mapme.forest"</span><span class="op">)</span>
+<span class="va">treeCover</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"pkgTest_treecover2000.tif"</span>, package <span class="op">=</span> <span class="st">"mapme.forest"</span><span class="op">)</span>
+<span class="va">lossYear</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"pkgTest_lossyear.tif"</span>, package <span class="op">=</span> <span class="st">"mapme.forest"</span><span class="op">)</span>
+<span class="va">co2Layer</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"pkgTest_co2_emission.tif"</span>, package <span class="op">=</span> <span class="st">"mapme.forest"</span><span class="op">)</span>
 <span class="co"># read the area of interest</span>
-<span class="va">roi</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html">st_read</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"aoi_polys.gpkg"</span>, package <span class="op">=</span> <span class="st">"mapme.forest"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">roi</span> <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">st_read</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="st">"aoi_polys.gpkg"</span>, package <span class="op">=</span> <span class="st">"mapme.forest"</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">grass</span> <span class="op">=</span> <span class="st">"/usr/lib/grass78"</span>
 
@@ -144,11 +140,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by MAPME-Intitiative, Darius Görgen.</p>
+  <p></p>
+<p>Developed by MAPME-Intitiative, Darius Görgen.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.0.</p>
 </div>
 
       </footer>
@@ -156,6 +154,8 @@
 
   
 
+
+  
 
   </body>
 </html>

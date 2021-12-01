@@ -54,6 +54,11 @@ statsGRASS <- function(grass, addon_base,
                        years, outdir = NULL, saveRaster, hideoutput = FALSE,
                        .tmpdir = tempdir()){
 
+
+  warning("IMPORTANT WARNING: The use of the CO2 emission layer during analysis is currently discouraged. /n
+           Several routines need to be adapted since the usage of a new data set by Harris et al (2021) (see https://www.nature.com/articles/s41558-020-00976-6)\n
+           Check out https://github.com/mapme-initiative/mapme.forest/issues/7 to recieve information if the issue has been solved.")
+
   # get unique ids from idcol
   if (saveRaster) dir.create(outdir, showWarnings = F)
   ids = unlist(st_drop_geometry(areas[, idcol]))

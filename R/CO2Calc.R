@@ -72,7 +72,9 @@ CO2Calc <- function (inputForestMap=NULL,
 
 
   #--------------------------- CHECK FOR ERROS IN INPUT -----------------------#
-
+  warning("IMPORTANT WARNING: The use of the CO2 emission layer during analysis is currently discouraged. /n
+           Several routines need to be adapted since the usage of a new data set by Harris et al (2021) (see https://www.nature.com/articles/s41558-020-00976-6)\n
+           Check out https://github.com/mapme-initiative/mapme.forest/issues/7 to recieve information if the issue has been solved.")
 
   if (!class(inputForestMap)[1] %in% c("RasterLayer", "RasterStack", "RasterBrick")){
     stop(paste0("No valid raster object specified in 'inputForestMap'.\n",

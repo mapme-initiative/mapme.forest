@@ -109,12 +109,12 @@ but simply that it was not measured in the data source.
 aoi = st_read(system.file("extdata", "aoi_polys.gpkg", package = "mapme.forest"))
 
 # download GFW data for the area of interest
-raster_files = downloadfGFW(shape = aoi,
-                            basename = "pkgTest",
-                            dataset = "GFC-2018-v1.6",
-                            outdir = "../data/",
-                            keepTmpFiles = T,
-                            .tmpdir = "../data/tmp")
+raster_files = downloadGFW(shape = aoi,
+                           basename = "pkgTest",
+                           dataset = "GFC-2018-v1.6",
+                           outdir = "../data/",
+                           keepTmpFiles = T,
+                           .tmpdir = "../data/tmp")
 
 # in case the projection between aoi and the downloaded rasters is different,
 # we need to reproject the aoi object
@@ -322,7 +322,7 @@ dev.off()
 
 ```{r mmu_yearly}
 for (l in 1:nlayers(yearlyForestMask)){
-yearlyForestMask[[l]] = prepTC(yearlyForestMask[[l]], thresholdClump = 5)
+  yearlyForestMask[[l]] = prepTC(yearlyForestMask[[l]], thresholdClump = 5)
 }
 
 plot(yearlyForestMask[[1:8]])

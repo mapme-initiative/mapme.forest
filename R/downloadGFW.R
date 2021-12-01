@@ -26,10 +26,9 @@
 #'  The function will only download the necessary data if it is not alread present
 #'  in the \code{tmpdir}.
 #' @param .tmpdir A \code{charachter} indicating a directory where to download
-#'  the raw tiles to. It defaults to a hidden folder called \code{.tmp} in the
-#'  current working directory, but can be set by the user. If the directory does
-#'  not exist on your machine it will be created without a message.
-#'
+#'  the raw tiles to. It defaults to a random directory name in the actual R temporary
+#'  directory. If you want to keep single values, e.g. when your aoi spans multiple
+#'  tiles, you can specify a custom directory.
 #' @return A \code{vector} of type \code{charachter} with all the files matching
 #'  the \code{basename} pattern in the \code{outdir} directory.
 #' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
@@ -47,8 +46,8 @@
 #' @import sp
 #' @importFrom curl has_internet
 #' @importFrom utils download.file
-#' @export downloadfGFW
-#' @name downloadfGFW
+#' @export downloadGFW
+#' @name downloadGFW
 #'
 #' @note This function depends on available gdal binaries on your system. Make sure they
 #'   are available as environment variables on your machine or use our docker image instead.
@@ -57,7 +56,7 @@
 #' \dontrun{
 #' aoi = st_read(system.file("extdata", "aoi_polys.gpkg", package = "mapme.forest"))
 #'
-#' raster_files = downloadfGFW(shape = aoi,
+#' raster_files = downloadGFW(shape = aoi,
 #'                             basename = "pkgTest",
 #'                             outdir = "./data/",
 #'                             keepTmpFiles = T,
@@ -70,12 +69,17 @@
 #' }))
 #' }
 #'
-downloadfGFW <- function(shape,
-                         dataset = "GFC-2018-v1.6",
-                         basename = "Hansen_1.6",
-                         outdir = ".",
-                         keepTmpFiles = F,
-                         .tmpdir = "./.tmp/"){
+downloadGFW <- function(shape,
+                        dataset = "GFC-2018-v1.6",
+                        basename = "Hansen_1.6",
+                        outdir = ".",
+                        keepTmpFiles = F,
+                        .tmpdir = tempfile(tmpdir = tempdir())){
+
+  warning("IMPORTANT WARNING: The use of the CO2 emission layer during analysis is currently discouraged. /n
+           Several routines need to be adapted since the usage of a new data set by Harris et al (2021) (see https://www.nature.com/articles/s41558-020-00976-6)\n
+           Check out https://github.com/mapme-initiative/mapme.forest/issues/7 to recieve information if the issue has been solved.")
+
 
   out = has_internet()
   if (!out){
@@ -87,21 +91,11 @@ downloadfGFW <- function(shape,
   if(sum(file.exists(filenames)) == 3){stop("Output files exists. Please delete if you want to rerun.")}
 
   # this code is heavily copy & pasted from: https://github.com/azvoleff/gfcanalysis
-  # co2 emission dataset is restricted roughly between 30N and 30S
-  # see http://data.globalforestwatch.org/datasets/d33587b6aee248faa2f388aaac96f92c_0 for more info
+  # update: new carbon removal data set by Harris (2021) available that is global in extent
   # convert input shape to bounding box
   proj = st_crs(4326)
   if (st_crs(shape)[[2]] != proj) shape = st_transform(shape, proj)
   shape = st_as_sf(st_as_sfc(st_bbox(shape)))
-  # calculate utm zone of central point of bounding box
-  #centroid = suppressWarnings(st_centroid(shape))
-  #zone = floor((st_coordinates(centroid)[1] + 180) / 6) + 1
-  #utm = paste0("+proj=utm +zone=", zone," +ellps=WGS84 +datum=WGS84 +units=m +no_defs")
-  # transform bounding box to central utm
-  #shape = st_transform(shape, utm)
-  # buffer bounding box (50 kilometers by default)
-  #shape = st_buffer(shape, dist = buffer)
-  #shape = st_transform(shape, proj)
   # make the GFC grid
   grid_GFC = makeGFWGrid(mnx=-180, mxx=170, dx=10, mny=-50, mxy=80, dy=10)
 
@@ -142,86 +136,43 @@ downloadfGFW <- function(shape,
     urls = paste0(baseurl, filenames)
 
     # read co2 spatial index
-    co2tiles =
-      tryCatch(read.csv("https://opendata.arcgis.com/datasets/d33587b6aee248faa2f388aaac96f92c_0.csv",as.is = TRUE),
-               error = function(e) NA, warning = function(w) print('The URL to the CO2 Emissions layer is broke. CO2 Layers are not available. Setting CO2 values to 0'))
+    co2_url = "https://data-api.globalforestwatch.org/dataset/gfw_forest_carbon_gross_emissions/v20211022/download/geotiff?grid=10/40000&tile_id=%s&pixel_meaning=Mg_CO2e_px&x-api-key=2d60cd88-8348-4c0f-a6d5-bd9adb585a8c"
+    target = paste0(max_y, "_", min_x)
+    url_co2 = sprintf(co2_url, target)
+    urls = c(urls, url_co2)
+    filenames = c(filenames, paste0("Harris-2021_co2_emission_", max_y, "_", min_x, ".tif"))
 
-    if(!is.na(co2tiles)){
-      tiles = as.character(co2tiles$tile_id)
-      target = paste0(max_y, "_", min_x)
-      check = target %in% tiles
-    } else {
-      check = FALSE
-    }
-
-    if (!check){
-      #message(paste0("There is no CO2 dataset available for the extent you queried.\n",
-      #               "The function will add an empty raster instead.\n"))
-      filenames = c(filenames, paste0("Zarin-2016_co2_emission_", max_y, "_", min_x, ".tif"))
-    } else {
-      urls_co2 = paste0("http://gfw2-data.s3.amazonaws.com/climate/Hansen_emissions/2018_loss/per_pixel/", max_y, "_" , min_x, "_tCO2_pixel_AGB_masked_by_loss.tif")
-      # bind together target urls
-      urls = c(urls, urls_co2)
-      filenames = c(filenames, paste0("Zarin-2016_co2_emission_", max_y, "_", min_x, ".tif"))
-    }
-
-    if(check){  # in cases where co2 data is available
-
-      for (i in 1:length(filenames)){
-        localname = file.path(.tmpdir, filenames[i])
-        if(file.exists(localname)){
-          print(paste0("File ", localname, " already exists. Skipping download."))
-          next
-        } else {
-          download.file(urls[i], localname)
-        }
-      }
-
-    } else { # create an empty dummy when co2 data is not available
-
-      for (i in 1:2){
-        localname = file.path(.tmpdir, filenames[i])
-        if(file.exists(localname)){
-          print(paste0("File ", localname, " already exists. Skipping download."))
-          next
-        } else {
-          download.file(urls[i], localname)
-        }
-      }
-
-      localname2 = file.path(.tmpdir, filenames[3])
-      if(!file.exists(localname2)) {
-        dummy <- raster(localname)
-        dummy = st_sf(st_as_sfc(st_bbox(dummy)), file.path(.tmpdir, "tmp.gpkg"))
-        dummy$value = 0
-        st_write(dummy, file.path(.tmpdir, "tmp.gpkg"))
-        file.copy(from = localname, to = localname2)
-        ts = raster(localname)
-        ts = paste(c(ncol(ts), nrow(ts)), collapse = " ")
-        command = paste0('gdal_rasterize -a value -a_nodata 0 -co "COMPRESS=LZW" -ot Float32 -ts ',ts, ' ', file.path(.tmpdir, "tmp.gpkg"), ' ', localname2)
-        system(command)
-        file.remove(file.path(.tmpdir, "tmp.gpkg"))
+    for (i in 1:length(filenames)){
+      localname = file.path(.tmpdir, filenames[i])
+      if(file.exists(localname)){
+        print(paste0("File ", localname, " already exists. Skipping download."))
+        next
+      } else {
+        download.file(urls[i], localname)
       }
     }
-
     file_list[[n]] = filenames
   }
 
   # loop through parameters and mosaic them with gdal system calls
   outfiles = unlist(file_list)
-  parameters = c("treecover2000", "lossyear", "co2_emission_")
+  parameters = c("treecover2000", "lossyear", "co2_emission")
 
   for (p in parameters){
     tmp = file.path(.tmpdir, outfiles[grep(p, outfiles)])
     filename = file.path(outdir, paste0(basename, "_", p, ".tif"))
-    if(file.exists(filename)){
-      message("Output file ", filename, " already exists. Skipping translation...")
-      next
+    if(length(tmp)>1){
+      if(file.exists(filename)){
+        message("Output file ", filename, " already exists. Skipping translation...")
+        next
+      } else {
+        command = paste0("gdalbuildvrt ", file.path(.tmpdir, "vrt.vrt "), paste(tmp, collapse = " "))
+        system(command)
+        command = paste0("gdal_translate -ot UInt16 -co COMPRESS=LZW -co BIGTIFF=YES ", file.path(.tmpdir, "vrt.vrt "), filename)
+        system(command)
+      }
     } else {
-      command = paste0("gdalbuildvrt ", file.path(.tmpdir, "vrt.vrt "), paste(tmp, collapse = " "))
-      system(command)
-      command = paste0("gdal_translate -ot UInt16 -co COMPRESS=LZW -co BIGTIFF=YES ", file.path(.tmpdir, "vrt.vrt "), filename)
-      system(command)
+      file.copy(tmp, filename)
     }
   }
 
@@ -237,12 +188,12 @@ downloadfGFW <- function(shape,
 
 #' Create the GFW tile grid
 #'
-#' This function is used in \code{\link{downloadfGFW}} to create a grid representing
+#' This function is used in \code{\link{downloadGFW}} to create a grid representing
 #' the GFW tiles.
 #'
-#' @param mnx Minimum x corrdinate
+#' @param mnx Minimum x coordinate
 #' @param mxx Maximum x coordinate
-#' @param dx x resoltion
+#' @param dx x resolution
 #' @param mny Minimum y coordinated
 #' @param mxy Maximum y coordinated
 #' @param dy y resolution

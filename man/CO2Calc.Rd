@@ -16,7 +16,7 @@ CO2Calc(
 )
 }
 \arguments{
-\item{inputForestMap}{A \code{RasterLayer} object with forest cover represented
+\item{inputForestMap}{A \code{SpatRaster} object with forest cover represented
 in binary (e.g 0 represents no forest; 1 represents forest). Each layer is
 expected to represent one year in the \code{years} object in a consecutive order.}
 

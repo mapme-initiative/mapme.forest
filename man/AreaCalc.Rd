@@ -15,7 +15,7 @@ AreaCalc(
 )
 }
 \arguments{
-\item{inputForestMap}{A \code{RasterLayer} object with forest cover represented
+\item{inputForestMap}{A \code{SpatRaster} object with forest cover represented
 in binary (e.g 0 represents no forest; 1 represents forest). Each layer is
 expected to represent one year in the \code{years} object in a consecutive order.}
 
@@ -26,7 +26,7 @@ will be calculated for features in the \code{studysite} object.}
 \item{latlon}{\code{logical}: Indicates whether or not the
 \code{inputForestMap} object is based on a geographic coordinate system
 or is projected to a planar coordinate system. In the former case,
-area is approximated by \code{\link[raster:area]{raster::area}}.}
+area is approximated by \code{\link[terra:area]{terra::area}}.}
 
 \item{polyName}{\code{charachter} of length 1. Indicates the column in the
 data frame of the \code{studysite} object to uniquely identify the features
@@ -51,7 +51,7 @@ The \code{studysite} object with its data frame appended columnwise
  squared unit of the input projection (most commonly in meters).
 }
 \description{
-Calculates the changes in forest area based on a \code{rasterObject} forest
+Calculates the changes in forest area based on a \code{SpatRaster} forest
   mask and a \code{SpatialPolygonsDataFrame} containing areas of interest.
 }
 \note{
@@ -60,11 +60,11 @@ This function relies heavily on parallization, indicating the
 }
 \examples{
 library(sf)
-library(raster)
+library(terra)
 library(mapme.forest)
 
 aoi = st_read(system.file("extdata", "aoi_polys.gpkg", package = "mapme.forest"))
-yearlyRaster = stack(system.file("extdata", "pkgTest_yearlyCover.tif",
+yearlyRaster = rast(system.file("extdata", "pkgTest_yearlyCover.tif",
                                  package = "mapme.forest"))
 result = AreaCalc(inputForestMap = yearlyRaster,
                   studysite = aoi[1,],
@@ -81,7 +81,7 @@ Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 \cr
 \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 \cr
-\emph{Contact Person:} Dr. Johannes Schielein
+\emph{Contact:} \email{contact@mapme-initiative.org}
 \cr
 \emph{Copyright:} MAPME-Initiative
 \cr

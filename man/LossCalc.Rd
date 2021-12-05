@@ -16,7 +16,7 @@ LossCalc(
 )
 }
 \arguments{
-\item{inputForestMap}{A \code{RasterLayer} object with forest cover represented
+\item{inputForestMap}{A \code{SpatRaster} object with forest cover represented
 in binary (e.g 0 represents no forest; 1 represents forest). Each layer is
 expected to represent one year in the \code{years} object in a consecutive order.}
 
@@ -31,7 +31,7 @@ will be calculated for features in the \code{studysite} object.}
 \item{latlon}{\code{logical}: Indicates whether or not the
 \code{inputForestMap} object is based on a geographic coordinate system
 or is projected to a planar coordinate system. In the former case,
-area is approximated by \code{\link[raster:area]{raster::area}}.}
+area is approximated by \code{\link[terra:area]{terra::area}}.}
 
 \item{polyName}{\code{charachter} of length 1. Indicates the column in the
 data frame of the \code{studysite} object to uniquely identify the features
@@ -65,13 +65,13 @@ This function relies heavily on parallization, indicating the
 }
 \examples{
 library(sf)
-library(raster)
+library(terra)
 library(mapme.forest)
 
 aoi = st_read(system.file("extdata", "aoi_polys.gpkg", package = "mapme.forest"))
 yearlyRaster = stack(system.file("extdata", "pkgTest_yearlyCover.tif",
                                   package = "mapme.forest"))
-lossYear = raster(system.file("extdata", "pkgTest_lossyear.tif",
+lossYear = rast(system.file("extdata", "pkgTest_lossyear.tif",
                               package = "mapme.forest"))
 
 result = LossCalc(inputForestMap = yearlyRaster,
@@ -86,11 +86,11 @@ str(result)
 
 }
 \author{
-Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net} Johannes Schielein
 \cr
 \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 \cr
-\emph{Contact Person:} Dr. Johannes Schielein
+\emph{Contact:} \email{contact@mapme-initiative.org}
 \cr
 \emph{Copyright:} MAPME-Initiative
 \cr

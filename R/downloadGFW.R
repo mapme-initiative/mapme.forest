@@ -75,7 +75,7 @@ downloadfGFW <- function(shape,
                          basename = "Hansen_1.6",
                          outdir = ".",
                          keepTmpFiles = F,
-                         .tmpdir = "./.tmp/"){
+                         .tmpdir = tempfile(tmpdir = tempdir())){
 
   out = has_internet()
   if (!out){

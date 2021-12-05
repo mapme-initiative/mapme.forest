@@ -166,7 +166,7 @@ AreaCalc <- function (inputForestMap=NULL,
 #' @export area_stats_seq
 #' @keywords internal
 #' @importFrom sf st_transform st_as_sfc st_bbox st_difference st_area
-#' @importFrom rast crs crop area xres yres
+#' @importFrom terra crs crop area xres yres
 #' @importFrom exactextractr exact_extract
 #' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net} Johannes Schielein
 #' \cr

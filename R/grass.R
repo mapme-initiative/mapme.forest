@@ -26,6 +26,10 @@
 #' @param outdir A character pointing to a directory where the output files
 #'   will be written to. If files with the same name as specified by the values in
 #'   \code{idcol} are present, their calculation is skipped without warning.
+#' @param .tmpdir A character string pointing to a directory where intermediate
+#'   GRASS files will be written to. Defaults to the output of \code{tempdir()}.
+#'   Note, that you should have write access to the directory, otherwise the
+#'   the function will fail.
 #' @param saveRaster Logical indicating if raster are to be saved to disk
 #' @param hideoutput Logical indicating if grass output should not be printed in console.
 #' @export statsGRASS
@@ -47,7 +51,8 @@
 statsGRASS <- function(grass, addon_base,
                        areas, tree_cover, tree_loss, tree_co2,
                        idcol, thresholdClump, thresholdCover,
-                       years, outdir = NULL, saveRaster, hideoutput = FALSE){
+                       years, outdir = NULL, saveRaster, hideoutput = FALSE,
+                       .tmpdir = tempdir()){
 
   # get unique ids from idcol
   if (saveRaster) dir.create(outdir, showWarnings = F)
@@ -64,7 +69,7 @@ statsGRASS <- function(grass, addon_base,
   # get projection information
   proj_raster = st_crs(raster(tree_cover))
   # create run directory for calculations
-  rundir = tempfile()
+  rundir = tempfile(tmpdir = .tmpdir)
   dir.create(rundir)
 
   # initiate GRASS session at PERMANENT

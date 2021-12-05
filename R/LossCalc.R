@@ -147,7 +147,7 @@ LossCalc <- function (inputForestMap=NULL,
     }
     #-------------------------------- PREPARING OUTPUT --------------------------#
     # prepare result data
-    LossStats =  terra::as.data.frame(do.call("rbind", LossStats))
+    LossStats =  as.data.frame(do.call("rbind", LossStats))
     colnames(LossStats) = paste0("loss_",unis+2000)
     # add missing years with 0
     for (i in years){
@@ -189,7 +189,7 @@ LossCalc <- function (inputForestMap=NULL,
 #' @export loss_calc_seq
 #' @keywords internal
 #' @importFrom sf st_transform
-#' @importFrom terra crs crop which.lyr area xres yres add values cellSize nlyr rast
+#' @importFrom terra crs crop which.lyr area xres yres values cellSize nlyr rast
 #' @importFrom exactextractr exact_extract
 #' @author Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 #' \cr
@@ -231,7 +231,7 @@ loss_calc_seq <- function(inputForestMap, inputLossMap, studysite, years, unis, 
     add(DummyAnLoss) <- dummy
   }
   #---------------------------- ZONAL STATISTICS --------------------------#
-  results <- exact_extract(DummyAnLoss, studysite2, "sum")
+  results <- terra::extract(DummyAnLoss, terra::vect(studysite2), fun="sum",na.rm=T,exact = TRUE)
   rm(DummyAnLoss, studysite2,lossyear, dummy); gc()
   return(results)
 }

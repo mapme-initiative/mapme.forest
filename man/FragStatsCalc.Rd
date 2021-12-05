@@ -22,7 +22,7 @@ calculated seperatly for every layer.}
 \item{latlon}{\code{logical}: Indicates whether or not the
 \code{inputForestMap} object is based on a geographic coordinate system
 or is projected to a planar coordinate system. In the former case,
-area is approximated by \code{\link[raster:area]{raster::area}}.}
+area is approximated by \code{\link[terra:area]{terra::area}}.}
 
 \item{polyName}{\code{charachter} of length 1. Indicates the column in the
 data frame of the \code{studysite} object to uniquely identify the features

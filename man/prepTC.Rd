@@ -4,7 +4,12 @@
 \alias{prepTC}
 \title{Pre-Processing of tree cover layers}
 \usage{
-prepTC(inputForestMap, thresholdCover = NULL, thresholdClump = NULL)
+prepTC(
+  inputForestMap,
+  thresholdCover = NULL,
+  thresholdClump = NULL,
+  ncores = 1
+)
 }
 \arguments{
 \item{inputForestMap}{A RasterLayer representing forest cover.
@@ -21,6 +26,8 @@ will get the value 0, any pixel above will get the value 1.}
 \item{thresholdClump}{A numeric of length one indicating the number of
 pixels which are classified as a clump. Any number of pixels smaller than
 this threshold will be classified to NA.}
+
+\item{ncores}{Number of cores to be used in internal calcuation functions. Defaults to 1 core but multiple can be used.}
 }
 \value{
 A RasterLayer object with binary values when \code{thresholdCover} was
@@ -31,10 +38,10 @@ A RasterLayer object with binary values when \code{thresholdCover} was
 Calculates a binary tree cover mask for a baseline year.
 }
 \examples{
-library(raster)
+library(terra)
 library(mapme.forest)
 
-treeCover = raster(system.file("extdata", "pkgTest_treecover2000.tif",
+treeCover = rast(system.file("extdata", "pkgTest_treecover2000.tif",
                                package = "mapme.forest"))
 binaryCover = prepTC(inputForestMap = treeCover,
                              thresholdCover = 75,
@@ -43,11 +50,11 @@ binaryCover
 
 }
 \author{
-Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}, Johannes Schielein
 \cr
 \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 \cr
-\emph{Contact Person:} Dr. Johannes Schielein
+\emph{Contact:}  \email{contact@mapme-initiative.org}
 \cr
 \emph{Copyright:} MAPME-Initiative
 \cr

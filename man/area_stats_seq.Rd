@@ -9,7 +9,7 @@ area_stats_seq(studysite, inputForestMap, latlon)
 \arguments{
 \item{studysite}{An sf object}
 
-\item{inputForestMap}{A raster object}
+\item{inputForestMap}{A SpatRaster object}
 
 \item{latlon}{Logical indicating if raster is unprojected or not}
 }
@@ -20,11 +20,11 @@ A dataframe with estimated areas
 Forest area calculation single mode (Helper Function)
 }
 \author{
-Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net} Johannes Schielein
 \cr
 \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 \cr
-\emph{Contact Person:} Dr. Johannes Schielein
+\emph{Contact Person:} \email{contact@mapme-initiative.org}
 \cr
 \emph{Copyright:} MAPME-Initiative
 \cr

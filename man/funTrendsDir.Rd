@@ -21,7 +21,7 @@ Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
 \cr
 \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 \cr
-\emph{Contact Person:} Dr. Johannes Schielein
+\emph{Contact:} \email{contact@mapme-initiative.org}
 \cr
 \emph{Copyright:} MAPME-Initiative
 \cr

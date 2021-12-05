@@ -31,12 +31,12 @@ in a binary forest mask form and an loss year layer which indicates which pixels
 were subject to forest loss in a given year,
 }
 \examples{
-library(raster)
+library(terra)
 library(mapme.forest)
 
-binaryCover = raster(system.file("extdata", "pkgTest_binaryCover.tif",
+binaryCover = rast(system.file("extdata", "pkgTest_binaryCover.tif",
                                  package = "mapme.forest"))
-lossYear = raster(system.file("extdata", "pkgTest_lossyear.tif",
+lossYear = rast(system.file("extdata", "pkgTest_lossyear.tif",
                               package = "mapme.forest"))
 yearlyMaps = getTM(inputForestMap = binaryCover,
                    inputLossMap = lossYear,

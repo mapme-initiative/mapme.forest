@@ -26,7 +26,7 @@ a raster of class ’asc’ (adehabitat package), ’RasterLayer’ (raster pack
 \item{latlon}{\code{logical}: Indicates whether or not the
 \code{inputForestMap} object is based on a geographic coordinate system
 or is projected to a planar coordinate system. In the former case,
-area is approximated by \code{\link[raster:area]{raster::area}}.}
+area is approximated by \code{\link[terra:area]{terra::area}}.}
 
 \item{na.rm}{Logical if NA values should be removed when calculating the statistics. Defaults to TRUE.}
 

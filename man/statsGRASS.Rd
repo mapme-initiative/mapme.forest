@@ -17,7 +17,8 @@ statsGRASS(
   years,
   outdir = NULL,
   saveRaster,
-  hideoutput = FALSE
+  hideoutput = FALSE,
+  .tmpdir = tempdir()
 )
 }
 \arguments{
@@ -61,6 +62,11 @@ will be written to. If files with the same name as specified by the values in
 \item{saveRaster}{Logical indicating if raster are to be saved to disk}
 
 \item{hideoutput}{Logical indicating if grass output should not be printed in console.}
+
+\item{.tmpdir}{A character string pointing to a directory where intermediate
+GRASS files will be written to. Defaults to the output of \code{tempdir()}.
+Note, that you should have write access to the directory, otherwise the
+the function will fail.}
 }
 \description{
 Translation pipeline using GRASS

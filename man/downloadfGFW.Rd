@@ -10,15 +10,15 @@ downloadfGFW(
   basename = "Hansen_1.6",
   outdir = ".",
   keepTmpFiles = F,
-  .tmpdir = "./.tmp/"
+  .tmpdir = tempfile(tmpdir = tempdir())
 )
 }
 \arguments{
 \item{shape}{A \code{sfObject} determining the extent for which to get the GFW data.}
 
 \item{dataset}{A \code{charachter} specifiying the version of the GFW data to extract.
-Defaults to version 1.6 from 2018. The newer version can be downloaded when
-you specify \code{dataset = "GFW-2019-v1.7"}.}
+Defaults to version 1.6 from 2018. A newer version can be downloaded when
+you specify the version e.g. \code{dataset = "GFW-2019-v1.7"}.}
 
 \item{basename}{A \code{charachter} which will be added to the resulting
 file names.}
@@ -77,11 +77,11 @@ f = crop(f, aoi)
 
 }
 \author{
-Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}
+Darius Görgen (MapTailor Geospatial Consulting GbR) \email{info@maptailor.net}, Johannes Schielein
 \cr
 \emph{Maintainer:} MAPME-Initiative \email{contact@mapme-initiative.org}
 \cr
-\emph{Contact Person:} Dr. Johannes Schielein
+\emph{Contact:} \email{contact@mapme-initiative.org}
 \cr
 \emph{Copyright:} MAPME-Initiative
 \cr

@@ -7,11 +7,11 @@
 makeGFWGrid(mnx, mxx, dx, mny, mxy, dy, proj = NULL)
 }
 \arguments{
-\item{mnx}{Minimum x corrdinate}
+\item{mnx}{Minimum x coordinate}
 
 \item{mxx}{Maximum x coordinate}
 
-\item{dx}{x resoltion}
+\item{dx}{x resolution}
 
 \item{mny}{Minimum y coordinated}
 
@@ -25,7 +25,7 @@ makeGFWGrid(mnx, mxx, dx, mny, mxy, dy, proj = NULL)
 A grid.
 }
 \description{
-This function is used in \code{\link{downloadfGFW}} to create a grid representing
+This function is used in \code{\link{downloadGFW}} to create a grid representing
 the GFW tiles.
 }
 \keyword{internal}

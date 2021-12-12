@@ -1,10 +1,10 @@
 ---
-title: "04 Big Data Analysis"
+title: "Big Data Analytics"
 author: "Darius Görgen"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{04 Big Data Analysis}
+  %\VignetteIndexEntry{Big Data Analytics}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
    %\VignetteDepends{ggplot2, plotly, stringr}

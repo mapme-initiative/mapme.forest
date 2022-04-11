@@ -8,14 +8,10 @@ Status](https://img.shields.io/codecov/c/github/mapme-initiative/mapme.forest/ma
 
 <!-- badges: end -->
 
-## IMPORTANT WARNING
+## IMPORTANT NOTE
 
-**The use of the CO2 emission layer during analysis is currently
-discouraged. Several routines need to be adapted since the usage of a
-new data set by Harris et al (2021) (see
-<https://www.nature.com/articles/s41558-020-00976-6>). Check out
-<https://github.com/mapme-initiative/mapme.forest/issues/7> to receive
-information if and when the issue has been solved.**
+**This package has been archived. Please use the [mapme.biodiversity](https://github.com/mapme-initiative/mapme.biodiversity) 
+package instead which offers even more biodiversity-related indicators.**
 
 ## About
 
